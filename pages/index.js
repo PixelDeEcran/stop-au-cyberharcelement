@@ -31,7 +31,7 @@ function Header() {
 
       <div className="header-container">
         <div className="header-content">
-          <div className={"header-logo"}>
+          <a href="#"><div className={"header-logo"}>
             <img
               width={80}
               height={80}
@@ -43,7 +43,7 @@ function Header() {
               <b>STOP</b> au<br />
               cyber-harcèlement
             </h1>
-          </div>
+          </div></a>
 
           <button onClick={() => setNavbarVisible(!navbarVisible)} className="mobile-navbar-toggle" aria-controls="header-navbar">
             
@@ -200,13 +200,13 @@ function Header() {
             position: fixed;
             z-index: 9999;
             background: url('/images/menu_black_24dp.svg');
-            background-size: 2rem;
+            background-size: 3rem;
             background-repeat: no-repeat;
             ${scrollY == 0 && !navbarVisible ?
               "filter: invert(98%) sepia(12%) saturate(265%) hue-rotate(324deg) brightness(119%) contrast(100%);" : ""}
-            width: 2rem;
+            width: 3rem;
             aspect-ratio: 1;
-            top: 3rem;
+            top: 2.5rem;
             right: 3rem;
           }
           
@@ -636,6 +636,7 @@ function ExampleCard({ children, id, profileUrl, name, text }) {
 
         .card h3 {
           font-size: 1.75em;
+          line-height: 1em;
         }
 
         .card > p {
@@ -715,7 +716,7 @@ function ExampleCard({ children, id, profileUrl, name, text }) {
           left: 0;
           height: 100%;
           bottom: 0;
-          z-index: 10;
+          z-index: 100000;
           background-color: rgba(0, 0, 0, 0.4);
         }
 
@@ -723,7 +724,7 @@ function ExampleCard({ children, id, profileUrl, name, text }) {
           width: 85vw;
           max-width: 45rem;
           background: white;
-          padding: 2.5rem 3rem;
+          padding: 3.5rem 3rem;
           border-radius: 16px;
           box-shadow: 0px 6px 23px rgba(0, 0, 0, 0.25);
           position: relative;
@@ -754,6 +755,7 @@ function ExampleCard({ children, id, profileUrl, name, text }) {
 
         .modal-head {
           font-size: 1.75em;
+          line-height: 1.2em;
         }
 
         .modal-head-right {
@@ -783,7 +785,10 @@ function ExampleCard({ children, id, profileUrl, name, text }) {
         }
 
         .modal-content {
-          margin-top: 32px;
+          margin-top: 12px;
+          overflow: auto;
+          height: 40vh;
+          max-height: 40rem;
         }
         
         @media screen and (max-width: 1200px) {
