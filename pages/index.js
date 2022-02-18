@@ -4,6 +4,12 @@ import styles from '../styles/Home.module.css'
 import logoNoBG from '../public/images/Logo-Icon-NoBG.png'
 import illustrationGirl from '../public/images/illustration_girl.png'
 import { WaveDef, WaveSection } from '../components/WaveSection'
+import { Navigation, Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 function Header() {
   return (
@@ -77,6 +83,11 @@ function HomeSection() {
   )
 }
 
+// TODO: Fix the swiper, when slidesPerView is 1, it looks buggy and text is not readable.
+//       I can't add a radial gradient and I don't know why, I spent too much hours trying
+//       to figure it out but there are still the bugs although in another workspace, and with vanilla js (so no react), it worked
+//       If someone passes by here and knows how to fix these issues, it wouldn't turn it down.
+//       But I think it has to do with how messy my code is :c
 function NumbersSection() {
   const Wave1 = WaveDef("#ffffff", "#0057FF", "0 0 1440 320", "M0,64L80,74.7C160,85,320,107,480,112C640,117,800,107,960,122.7C1120,139,1280,181,1360,202.7L1440,224L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z");
   const Wave2 = WaveDef("#ffffff", "#0057FF", "0 0 1440 320", "M0,64L80,85.3C160,107,320,149,480,138.7C640,128,800,64,960,37.3C1120,11,1280,21,1360,26.7L1440,32L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z");
@@ -88,23 +99,181 @@ function NumbersSection() {
     marginTop={20}
     contentMarginTop={-120}
     backgroundColor={"white"}
+    className="root"
     >
       <h2>Chiffres</h2>
 
-      { /* eslint-disable-next-line @next/next/no-img-element */ }
-      <img 
-        src="/images/tmp_slider.png" 
-        width="100%"
-        height="auto"
-        alt="Law sentences"
-      />
+      <div className="swiper-container">
+        <Swiper
+          modules={[Navigation, Pagination]}
+          loop
+          autoplay={{
+            delay: 100,
+            disableOnInteraction: true
+          }}
+          breakpoints={{
+            600: {
+              slidesPerView: 1,
+              centerInsufficientSlides: true
+            },
+            1200: {
+              slidesPerView: 2,
+            },
+            1800: {
+              slidesPerView: 3,
+            },
+          }}
+          navigation={{
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          }}
+          pagination={{ 
+            el: '.swiper-pagination',
+            clickable: true,
+          }}
+          className={"swiper"}
+        >
+          <SwiperSlide key={"1"} className="swiper-slide">
+            <img src="https://www.solidarites.org/wp-content/uploads/2016/10/chiffre-cle-8.jpg" alt="Test" />
+
+            <div className="swiper-slide-text color-white">
+              <h6>2,6</h6>
+              <p>
+                <strong>millions de personnes meurent chaque année</strong>
+                {' '}des suites de maladies liées à l{"'"}eau insalubre.
+              </p>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide key={"2"} className="swiper-slide">
+            <img src="https://www.solidarites.org/wp-content/uploads/2016/10/chiffre-cle-1.jpg" alt="Test" />
+            
+            <div className="swiper-slide-text color-white">
+              <h6>29%</h6>
+              <p>
+                <strong>de la population mondiale</strong>
+                {' '}n'ont toujours pas accès à l{"'"}eau potable.
+              </p>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide key={"3"} className="swiper-slide">
+            <img src="https://www.solidarites.org/wp-content/uploads/2016/10/chiffre-cle-4.jpg" alt="Test" />
+            
+            <div className="swiper-slide-text color-white">
+              <h6>5</h6>
+              <p>
+                <strong>personnes</strong>
+                {' '}meurent chaque minute des suites de maladies liées à l{"'"}eau insalubre.
+              </p>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide key={"4"} className="swiper-slide">
+            <img src="https://www.solidarites.org/wp-content/uploads/2016/10/chiffre-cle-5.jpg" alt="Test" />
+            
+            <div className="swiper-slide-text color-white">
+              <h6>Près d{"'"}1/4</h6>
+              <p>
+                <strong>de la population mondiale</strong>
+                {' '}est en situation de stress hydrique très grave.
+              </p>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+
+        <div className="swiper-pagination"></div>
+
+        <div className="swiper-button-prev"></div>
+        <div className="swiper-button-next"></div>
+      </div>
+
+      <div className="button-container">
+        <button className="light-contained-button">C'est quoi ?</button>
+      </div>
       <style jsx>{`
-        * {
-          color: #0A123A;
+        .swiper-container {
+          box-sizing: border-box;
+        }
+
+        .swiper {
+          box-sizing: border-box;
+        }
+
+        .swiper-pagination {
+          bottom: 70px;
+        }
+
+        .swiper-button-prev {
+          position: absolute;
+          margin-top: -45px;
+          left: calc(100vw / 2 - min(75rem / 2, 85vw / 2) - 60px)
+        }
+        .swiper-button-next {
+          position: absolute;
+          margin-top: -45px;
+          left: calc(100vw / 2 + min(75rem / 2, 85vw / 2) + 30px)
+        }
+
+        .swiper-slide {
+          position: absolute;
+          text-align: center;
+          font-size: 1em;
+          background: #fff;
+          box-sizing: border-box;
+        }
+
+        .swiper-slide img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .swiper-slide::before {
+          content: '';
+          position:absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: radial-gradient(200% 200% at 60% 20%, transparent 10%, black 100%);
+          z-index: 3;
+        }
+        
+        .swiper-slide-text {
+          color: white;
+          position: absolute;
+          bottom: 1.5em;
+          left: 2em;
+          width: 300px;
+          text-align: left;
+          z-index: 2;
+        }
+        
+        .swiper-slide-text h6 {
+          font-size: 4em;
+          font-weight: 700;
+          margin-bottom: 0;
+        }
+        .swiper-slide-text p {
+          font-size: 1.5em;
+          line-height: 1em;
+        }
+        .swiper-slide-text strong {
+          font-size: 1.4em;
+          line-height: 1em;
+          font-weight: bold;
         }
 
         h2 {
+          color: #0A123A;
           font-size: 2em;
+        }
+        
+        .button-container {
+          margin-top: 50px;
+          margin-bottom: -40px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
       `}</style>
     </WaveSection>
@@ -188,7 +357,7 @@ function WhatIsItSection() {
 
             <p>
               * Les parents des auteurs mineurs sont  
-                &nbsp;&nbsp;&nbsp;responsables civilement
+                responsables civilement
             </p>
           </div>
         </div>
@@ -464,7 +633,7 @@ function Footer() {
 
           <p>
             Ce site web a été réalisé par François SIGOIGNET et Tom GOBICHON dans le cadre des cours d’EMC. 
-            Le code source du site web est disponible <a className="link" href="#">ici</a>.
+            Le code source du site web est disponible <a className="link" href="https://github.com/PixelDeEcran/stop-au-cyberharcelement" target={"_blank"} rel="noreferrer">ici</a>.
           </p>
         </div>
       </div>

@@ -21,10 +21,21 @@ p {
   text-decoration: underline;
 }
 
+.light-contained-button {
+  background: #E5E7F2;
+  font-family: Roboto, sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: 0A123A;
+  padding: 0.8rem 1.5rem;
+	border: 0;
+  border-radius: 0.6rem;
+}
+
 .dark-contained-button {
   background: #0A123A;
   font-family: Roboto, sans-serif;
-  font-size: 1em;
+  font-size: 1.2em;
   font-weight: 500;
   color: white;
   padding: 0.8rem 1.5rem;
