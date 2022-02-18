@@ -140,7 +140,7 @@ function NumbersSection() {
               <h6>2,6</h6>
               <p>
                 <strong>millions de personnes meurent chaque année</strong>
-                {' '}des suites de maladies liées à l{"'"}eau insalubre.
+                {' '}des suites de maladies liées à l&apos;eau insalubre.
               </p>
             </div>
           </SwiperSlide>
@@ -151,7 +151,7 @@ function NumbersSection() {
               <h6>29%</h6>
               <p>
                 <strong>de la population mondiale</strong>
-                {' '}n'ont toujours pas accès à l{"'"}eau potable.
+                {' '}n&apos;ont toujours pas accès à l&apos;eau potable.
               </p>
             </div>
           </SwiperSlide>
@@ -162,7 +162,7 @@ function NumbersSection() {
               <h6>5</h6>
               <p>
                 <strong>personnes</strong>
-                {' '}meurent chaque minute des suites de maladies liées à l{"'"}eau insalubre.
+                {' '}meurent chaque minute des suites de maladies liées à l&apos;eau insalubre.
               </p>
             </div>
           </SwiperSlide>
@@ -170,7 +170,7 @@ function NumbersSection() {
             <img src="https://www.solidarites.org/wp-content/uploads/2016/10/chiffre-cle-5.jpg" alt="Test" />
             
             <div className="swiper-slide-text color-white">
-              <h6>Près d{"'"}1/4</h6>
+              <h6>Près d&apos;1/4</h6>
               <p>
                 <strong>de la population mondiale</strong>
                 {' '}est en situation de stress hydrique très grave.
@@ -186,7 +186,7 @@ function NumbersSection() {
       </div>
 
       <div className="button-container">
-        <button className="light-contained-button">C'est quoi ?</button>
+        <button className="light-contained-button">C&apos;est quoi ?</button>
       </div>
       <style jsx>{`
         .swiper-container {
