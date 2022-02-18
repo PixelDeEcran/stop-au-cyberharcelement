@@ -1,9 +1,551 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import logoNoBG from '../public/images/Logo-Icon-NoBG.png'
+import illustrationGirl from '../public/images/illustration_girl.png'
+import { WaveDef, WaveSection } from '../components/WaveSection'
+
+function Header() {
+  return (
+    <header className={styles.header}>
+      <div className={styles.gradient_bar}></div>
+
+      <div className={styles.header_container +  " " + styles.content}>
+        <div className={styles.header_logo}>
+          <Image
+            width={80}
+            height={80}
+            src={logoNoBG}
+            alt={"Logo STOP au cyber-harcèlement"}
+          />
+          <h1>
+            <b>STOP</b> au<br />
+            cyber-harcèlement
+          </h1>
+        </div>
+
+        <navbar className={styles.header_navbar}>
+          <a>
+            <b>Accueil</b>
+          </a>
+          <a>
+            Chiffres
+          </a>
+          <a>
+            {"C'est quoi ?"}
+          </a>
+          <a>
+            Exemples
+          </a>
+          <a>
+            Conséquences
+          </a>
+          <a>
+            Que faire ?
+          </a>
+        </navbar>
+      </div>
+    </header>
+  )
+}
+
+function HomeSection() {
+  return (
+    <section className={styles.home}>
+      <div className={styles.home_container +  " " + styles.content}>
+        <div className={styles.home_content}>
+          <h2>Le cyber-harcèlement ne cesse de fragiliser le lien social.</h2>
+          <p>
+            En 2021, <span className='underline'>20 % des jeunes</span> affirment
+            avoir déjà été confrontés à <span className='underline'>une situation de cyber-harcèlement</span>{' '}
+            (suite à une étude réalisée par e-Enfance et la Caisse d’épargne)
+          </p>
+          <button className="dark-contained-button">En apprendre plus</button>
+        </div>
+        
+        <div className={styles.home_illustration_parent}>
+          <Image
+            src={illustrationGirl}
+            layout="fill"
+            objectFit="contain"
+            alt={"Girl victim of cyber bullying"}
+            className={styles.home_illustration}
+          />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function NumbersSection() {
+  const Wave1 = WaveDef("#ffffff", "#0057FF", "0 0 1440 320", "M0,64L80,74.7C160,85,320,107,480,112C640,117,800,107,960,122.7C1120,139,1280,181,1360,202.7L1440,224L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z");
+  const Wave2 = WaveDef("#ffffff", "#0057FF", "0 0 1440 320", "M0,64L80,85.3C160,107,320,149,480,138.7C640,128,800,64,960,37.3C1120,11,1280,21,1360,26.7L1440,32L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z");
+  
+  return (
+    <WaveSection
+    Wave1={Wave1}
+    Wave2={Wave2}
+    marginTop={20}
+    contentMarginTop={-120}
+    backgroundColor={"white"}
+    >
+      <h2>Chiffres</h2>
+
+      { /* eslint-disable-next-line @next/next/no-img-element */ }
+      <img 
+        src="/images/tmp_slider.png" 
+        width="100%"
+        height="auto"
+        alt="Law sentences"
+      />
+      <style jsx>{`
+        * {
+          color: #0A123A;
+        }
+
+        h2 {
+          font-size: 2em;
+        }
+      `}</style>
+    </WaveSection>
+  )
+}
+
+function WhatIsItSection() {
+  const Wave2 = WaveDef("#0057FF", "#E5E7F2", "0 64 1440 320", "M0,64L80,85.3C160,107,320,149,480,154.7C640,160,800,128,960,122.7C1120,117,1280,139,1360,149.3L1440,160L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z");
+
+  return (
+    <WaveSection
+      Wave1={null}
+      Wave2={Wave2}
+      marginTop={-160}
+      contentMarginTop={-60}
+      backgroundColor={"#0057FF"}
+    >
+      <h2>
+        Le cyber-harcèlement,<br />
+        — c’est quoi ?
+      </h2>
+      
+      <div className="container">
+        <div className="card-container">
+          <div className="card">
+            <div className="card-head">
+              <Image 
+                src="/images/menu_book_black_24dp.svg" 
+                width={52}
+                height={48}
+                alt="Book icon"
+              />
+              <h3>Définition</h3>
+            </div>
+            
+            <hr />
+
+            <p>
+              Le cyber-harcèlement est un acte <strong>agressif, intentionnel</strong> perpétré 
+              par un individu ou un groupe d’individus au moyen de formes 
+              de <strong>communication électroniques</strong>, <span className='underline'>de façon répétée</span> à l’encontre 
+              d’une victime qui ne peut facilement se défendre seule. <br />
+              <br />
+              Il peut prendre <span className='underline'>différentes</span> formes :
+              <ul>
+                <li>intimidations, insultes, moqueries, menaces</li>
+                <li>propagation de rumeurs</li>
+                <li>piratage et usurpation d’identité digitale</li>
+                <li>publication de photos/vidéos d’une personne en mauvaise posture</li>
+                <li>sexting</li>
+              </ul>
+            </p>
+          </div>
+          <div className="card">
+            <div className="card-head">
+              { /* I don't know why but nextjs' image behave in a weird way */ }
+              { /* eslint-disable-next-line @next/next/no-img-element */ }
+              <img 
+                src="/images/law_icon.svg" 
+                width="54px"
+                height="54px"
+                alt="Law icon"
+              />
+              <h3>Ce que dit la loi</h3>
+            </div>
+            
+            <hr />
+
+            <p>
+              Le gouvernement français est très fortement opposé 
+              aux cybercrimes et puni sévèrement les auteurs :
+            </p>
+
+            { /* eslint-disable-next-line @next/next/no-img-element */ }
+            <img 
+              src="/images/law_sentences.png" 
+              width="100%"
+              height="auto"
+              alt="Law sentences"
+            />
+
+            <p>
+              * Les parents des auteurs mineurs sont  
+                &nbsp;&nbsp;&nbsp;responsables civilement
+            </p>
+          </div>
+        </div>
+        
+        <button className="dark-contained-button">Voir des exemples de <br /> cyber-harcèlement</button>
+      </div>
+
+      <style jsx>{`
+        .container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 2em;
+        }
+
+        .card-container {
+          display: flex;
+          gap: 3em;
+          color: #0A123A;
+        }
+
+        .card {
+          background: white;
+          width: 100%;
+          padding: 32px 40px;
+          border-radius: 16px;
+          font-size: 1.25em;
+          line-height: 1.25em;
+        }
+
+        .card-head {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 8px;
+          margin: -16px 0;
+        }
+
+        .card h3 {
+          font-size: 1.75em;
+        }
+
+        .card hr {
+          border-top: 3px solid #0A123A;
+        }
+
+        h2 {
+          font-size: 2em;
+          line-height: 1.1em;
+        }
+      `}</style>
+    </WaveSection>
+  )
+}
+
+
+function ExamplesSection() {
+  return (
+    <WaveSection
+      marginTop={-160}
+      contentMarginTop={-60}
+      backgroundColor={"#E5E7F2"}
+    >      
+      <div className="container">
+        <h2>
+          Exemples de cyber-harcèlement
+        </h2>
+        
+        <div className="card-container">
+          <div className="card">
+            <div className="card-head">
+              <img 
+                src="/images/bilal_hassani.png" 
+                alt="Book icon"
+              />
+              <div className="card-head-right">
+                <h3>Bilal Hassani</h3>
+                <hr />
+              </div>
+            </div>
+
+            <p>
+              Bilal Hassani, d’origine marocaine, est un jeune homme de 22 ans venu petit s’installer en France avec sa mère et son frère. Il est maintenant influenceur, chanteur, auteur-compositeur et youtubeur sur Twitteur et Youtube avec plus d’un million d’abonnés. En 2017, Bilil va faire son coming out la veille de la Gay Pride 2017. La Gay Pride est une marche des fiertés LGBT (Lesbiennes, Gays, Bisexuelles, Transgenre et autre. En effet, cette année, B. Hassani va publier sur Twitter une chanson annonçant son homosexualité. Ses plus grands fans lui resteront fidèles mais va également être victime de cyber-harcèlement, d’attaques 
+            </p>
+
+            <button className="read-more">Lire la suite</button>
+          </div>
+          <div className="card">
+            <div className="card-head">
+              <img 
+                src="/images/bilal_hassani.png" 
+                alt="Book icon"
+              />
+              <div className="card-head-right">
+                <h3>Bilal Hassani</h3>
+                <hr />
+              </div>
+            </div>
+
+            <p>
+              Bilal Hassani, d’origine marocaine, est un jeune homme de 22 ans venu petit s’installer en France avec sa mère et son frère. Il est maintenant influenceur, chanteur, auteur-compositeur et youtubeur sur Twitteur et Youtube avec plus d’un million d’abonnés. En 2017, Bilil va faire son coming out la veille de la Gay Pride 2017. La Gay Pride est une marche des fiertés LGBT (Lesbiennes, Gays, Bisexuelles, Transgenre et autre. En effet, cette année, B. Hassani va publier sur Twitter une chanson annonçant son homosexualité. Ses plus grands fans lui resteront fidèles mais va également être victime de cyber-harcèlement, d’attaques 
+            </p>
+
+            <button className="read-more">Lire la suite</button>
+          </div>
+        </div>
+        
+        <button className="dark-outlined-button">
+          Découvrir les conséquences <br />
+          du cyber-harcèlement
+        </button>
+      </div>
+
+      <style jsx>{`
+        .container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          color: #0A123A;
+        }
+
+        .card-container {
+          display: flex;
+          gap: 3em;
+        }
+
+        .card {
+          background: white;
+          width: 100%;
+          padding: 32px 40px;
+          border-radius: 16px;
+          font-size: 1.25em;
+          line-height: 1.25em;
+          box-shadow: 0px 6px 23px rgba(0, 0, 0, 0.25);
+        }
+
+        .card-head {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 8px;
+          margin: -16px 0;
+        }
+
+        .card-head-right {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          margin-top: -12px;
+        }
+
+        .card-head-right > * {
+          width: 100%;
+        }
+
+        .card-head-right > hr {
+          border-top: 3px solid #0A123A;
+          margin-top: -24px;
+        }
+
+        .card h3 {
+          font-size: 1.75em;
+        }
+
+        .card > p {
+          position: relative;
+        }
+
+        .card > p:after {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          content: "";
+          background: linear-gradient(to top,
+            rgba(255,255,255, 1) 1%, 
+            rgba(255,255,255, 0) 40%
+          );
+          pointer-events: none;
+        }
+
+        .card-head > img {
+          max-width: 56px;
+          max-height: 56px;
+          min-width: 56px;
+          min-height: 56px;
+          object-fit: cover;
+          filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.25));
+          border-radius: 500px;
+        }
+
+        h2 {
+          font-size: 2em;
+          line-height: 1.1em;
+        }
+
+        .read-more::before {
+          content: '→ '
+        }
+        
+        .read-more {
+          background: transparent;
+          font-family: Roboto, sans-serif;
+          font-size: 1em;
+          font-weight: 500;
+          color: #0057FF;
+          border: 0;
+          border-radius: 0.6rem;
+        }
+
+        .read-more:hover {
+          text-decoration: underline;
+        }
+
+        .container > button {
+          margin-top: 30px;
+        }
+      `}</style>
+    </WaveSection>
+  )
+}
+
+
+function Footer() {
+  const Wave1 = WaveDef("#0A123A", "#FFFFFF", "0 0 1440 320", "M0,160L120,186.7C240,213,480,267,720,261.3C960,256,1200,192,1320,160L1440,128L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z");
+
+  return (
+    <WaveSection
+      Wave1={Wave1}
+      marginTop={-80}
+      contentMarginTop={0}
+      backgroundColor={"#0A123A"}
+      type="footer"
+    >
+      
+      
+      <div className="container">
+        <div className={styles.header_logo}>
+          <Image
+            width={80}
+            height={80}
+            src={logoNoBG}
+            alt={"Logo STOP au cyber-harcèlement"}
+          />
+          <h1>
+            <b>STOP</b> au<br />
+            cyber-harcèlement
+          </h1>
+        </div>
+
+        <div className="footer-right">
+          <navbar className={styles.header_navbar}>
+            <a>
+              Accueil
+            </a>
+            <a>
+              Chiffres
+            </a>
+            <a>
+              {"C'est quoi ?"}
+            </a>
+            <a>
+              Exemples
+            </a>
+            <a>
+              Conséquences
+            </a>
+            <a>
+              Que faire ?
+            </a>
+          </navbar>
+
+          <p>
+            Ce site web a été réalisé par François SIGOIGNET et Tom GOBICHON dans le cadre des cours d’EMC. 
+            Le code source du site web est disponible <a className="link" href="#">ici</a>.
+          </p>
+        </div>
+      </div>
+
+      <style jsx>{`
+        .container {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: flex-start;
+        }
+
+        .footer-right {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+
+          max-width: 65%;
+        }
+
+        .link {
+          color: #2D74FF;
+        }
+      `}</style>
+    </WaveSection>
+  )
+}
+
+/*
+
+    <section className={styles.numbers}>
+      <svg className={styles.wave_drop_shadow} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#ffffff" fillOpacity="1" d="M0,32L60,58.7C120,85,240,139,360,176C480,213,600,235,720,229.3C840,224,960,192,1080,202.7C1200,213,1320,267,1380,293.3L1440,320L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+      </svg>
+      <div className={styles.numbers_container}>
+        <div className={styles.numbers_content + " " + styles.content}>
+          <h2>Chiffres</h2>
+        </div>
+      </div>
+    </section>
+*/
 
 export default function Home() {
   return (
+    <>
+      <Head>
+        <title>STOP au Cyber-Harcèlement</title>
+
+        <meta name="description" content="Generated by create next app" />
+        <meta name="description" content="STOP au Cyber-Harcèlement is a wesite to help fighting against cyber harassment." />
+        <meta name="author" content="François SIGOIGNET et Tom GOBICHON" />
+
+        <meta property="og:title" content="STOP au Cyber-Harcèlement" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.cyberharcelement.org/" />
+        <meta property="og:description" content="STOP au Cyber-Harcèlement is a wesite to help fighting against cyber harassment." />
+        <meta property="og:image" content="images/Logo.png" />
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+        { /* eslint-disable-next-line @next/next/no-page-custom-font */ }
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+      </Head>
+
+      <main>
+        <Header />
+
+        <HomeSection />
+        <NumbersSection />
+        <WhatIsItSection />
+        <ExamplesSection />
+
+        <Footer />
+      </main>
+    </>
+  )
+}
+
+/*
+
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
@@ -65,5 +607,4 @@ export default function Home() {
         </a>
       </footer>
     </div>
-  )
-}
+*/

@@ -2,15 +2,44 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #0057FF;
+  font-family: Roboto, sans-serif;
+  font-size: 1rem;
+  line-height: 1.4em;
+  color: white;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+h1 {
+  font-weight: 400;
 }
 
-* {
+p {
+  font-weight: 400;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.dark-contained-button {
+  background: #0A123A;
+  font-family: Roboto, sans-serif;
+  font-size: 1em;
+  font-weight: 500;
+  color: white;
+  padding: 0.8rem 1.5rem;
+	border: 0;
+  border-radius: 0.6rem;
+}
+
+.dark-outlined-button {
+  background: transparent;
+  font-family: Roboto, sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #0A123A;
+  padding: 0.4rem 1rem;
+	border: 3px solid #0A123A;
   box-sizing: border-box;
+  border-radius: 0.6rem;
 }
