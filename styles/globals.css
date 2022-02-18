@@ -5,12 +5,23 @@ body {
   background-color: #0057FF;
   font-family: Roboto, sans-serif;
   font-size: 1rem;
-  line-height: 1.4em;
+  line-height: 1.2em;
   color: white;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: white;
+  text-decoration: none;
 }
 
 h1 {
   font-weight: 400;
+}
+
+h2 {
+  font-size: 3em;
+  line-height: 1.1em;
 }
 
 p {
@@ -23,34 +34,84 @@ p {
 
 .light-contained-button {
   background: #E5E7F2;
+  text-align: center;
   font-family: Roboto, sans-serif;
-  font-size: 1.2em;
+  font-size: 1.3rem;
   font-weight: bold;
-  color: 0A123A;
+  color: #0A123A;
   padding: 0.8rem 1.5rem;
 	border: 0;
   border-radius: 0.6rem;
+}
+
+.light-contained-button:hover {
+  background: #ced1e2;
 }
 
 .dark-contained-button {
   background: #0A123A;
+  text-align: center;
   font-family: Roboto, sans-serif;
-  font-size: 1.2em;
-  font-weight: 500;
+  font-size: 1.3rem;
+  font-weight: 400;
   color: white;
-  padding: 0.8rem 1.5rem;
+  padding: 1.0rem 1.5rem;
 	border: 0;
   border-radius: 0.6rem;
 }
 
+.dark-contained-button:hover {
+  background: #131c49;
+}
+
 .dark-outlined-button {
   background: transparent;
+  text-align: center;
   font-family: Roboto, sans-serif;
-  font-size: 1.2em;
+  font-size: 1.3rem;
   font-weight: bold;
   color: #0A123A;
   padding: 0.4rem 1rem;
 	border: 3px solid #0A123A;
   box-sizing: border-box;
   border-radius: 0.6rem;
+}
+
+.dark-outlined-button:hover {
+  color: #131c49;
+  border-color: #131c49;
+  background: rgba(19, 28, 73, 0.1);
+}
+
+
+/* TODO : Move this 'cause this is only for one page */
+
+#numbers .swiper {
+  position: relative;
+  height: 600px;
+}
+
+#numbers .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  height: 600px;
+  width: 600px;
+  background: #fff;
+}
+
+#numbers .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#numbers .swiper-slide::before {
+  content: '';
+  position:absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(200% 200% at 60% 20%, transparent 10%, black 100%);
+  z-index: 1;
 }

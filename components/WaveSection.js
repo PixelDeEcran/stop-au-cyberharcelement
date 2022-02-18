@@ -17,7 +17,7 @@ export function WaveDef(color, backgroundColor, viewBox, pathData) {
         svg {
           position: relative;
           display: block;
-          width: 100vw;
+          width: 100%;
           height: 180px;
           filter: drop-shadow(0 0.25rem 1rem rgba(0, 0, 0, 0.25));
         }
@@ -45,7 +45,6 @@ export function WaveSection({ children, id, Wave1, Wave2, marginTop, contentMarg
       <style jsx>{`
         .root {
           margin-top: ${marginTop}px;
-          width: 100vw;
         }
 
         .container {

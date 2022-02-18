@@ -4,60 +4,224 @@ import styles from '../styles/Home.module.css'
 import logoNoBG from '../public/images/Logo-Icon-NoBG.png'
 import illustrationGirl from '../public/images/illustration_girl.png'
 import { WaveDef, WaveSection } from '../components/WaveSection'
-import { Navigation, Pagination } from 'swiper';
+import { Navigation, Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useEffect, useState } from 'react';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 function Header() {
+  const [scrollY, setScrollY] = useState(0);
+  const [navbarVisible, setNavbarVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = e => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [scrollY]);
+
   return (
-    <header className={styles.header}>
-      <div className={styles.gradient_bar}></div>
+    <header>
+      <div className="gradient_bar"></div>
 
-      <div className={styles.header_container +  " " + styles.content}>
-        <div className={styles.header_logo}>
-          <Image
-            width={80}
-            height={80}
-            src={logoNoBG}
-            alt={"Logo STOP au cyber-harcèlement"}
-          />
-          <h1>
-            <b>STOP</b> au<br />
-            cyber-harcèlement
-          </h1>
+      <div className="header-container">
+        <div className="header-content">
+          <div className={"header-logo"}>
+            <img
+              width={80}
+              height={80}
+              src={"/images/Logo-Icon-NoBG.png"}
+              alt={"Logo STOP au cyber-harcèlement"}
+              className="header-logo-img"
+            />
+            <h1>
+              <b>STOP</b> au<br />
+              cyber-harcèlement
+            </h1>
+          </div>
+
+          <button onClick={() => setNavbarVisible(!navbarVisible)} className="mobile-navbar-toggle" aria-controls="header-navbar">
+            
+          </button>
+
+          <nav>
+            <ul id="header-navbar" data-visible={navbarVisible ? "true" : "false"} className="header-navbar">
+              <a href="#home">
+                Accueil
+              </a>
+              <a href="#numbers">
+                Chiffres
+              </a>
+              <a href="#what-is-it">
+                {"C'est quoi ?"}
+              </a>
+              <a href="#examples">
+                Exemples
+              </a>
+              <a href="#consequences">
+                Conséquences
+              </a>
+              <a href="#what-to-do">
+                Que faire ?
+              </a>
+            </ul>
+          </nav>
         </div>
-
-        <navbar className={styles.header_navbar}>
-          <a>
-            <b>Accueil</b>
-          </a>
-          <a>
-            Chiffres
-          </a>
-          <a>
-            {"C'est quoi ?"}
-          </a>
-          <a>
-            Exemples
-          </a>
-          <a>
-            Conséquences
-          </a>
-          <a>
-            Que faire ?
-          </a>
-        </navbar>
       </div>
+
+      <style jsx>{`
+        header {
+          position: relative;
+          z-index: 1000;
+          display: flex;
+          justify-content: center;
+          height: 7rem;
+        }
+
+        .gradient_bar {
+          background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100px;
+          z-index: 0;
+        }
+
+        .header-container {
+          position: fixed;
+          top: 0;
+          display: flex;
+          justify-content: center;
+          ${scrollY > 0 && "background: white;"}
+          transition: background-color 0.5s;
+          width: 100vw;
+        }
+
+        .header-content {
+          display: flex;
+          justify-content: space-between;
+          padding: 1.5rem 0;
+          z-index: 1;
+          width: 85vw;
+          max-width: 75rem;
+        }
+
+        .header-logo {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          color: ${scrollY > 0 ? "#0A123A" : "white"};
+        }
+
+        .header-logo-img {
+          ${scrollY > 0 &&
+            "filter: brightness(0) saturate(100%) invert(12%) sepia(8%) saturate(7480%) hue-rotate(200deg) brightness(89%) contrast(109%);"}
+        }
+
+        .header-logo > h1 {
+          font-size: 1em;
+          line-height: 0.95em;
+        }
+
+        .header-navbar {
+          padding: 0;
+          margin: 0;
+          margin-top: 2em;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 1em;
+        }
+
+        .mobile-navbar-toggle {
+          display: none;
+        }
+
+        .header-navbar a {
+          position: relative;
+          color: ${scrollY > 0 ? "#0A123A" : "white"};
+        }
+
+        .header-navbar a::after {
+          content: '';
+          position: absolute;
+          width: 0%;
+          height: 2px;
+          margin: 0 auto;
+          bottom: -2px;
+          left: 0;
+          right: 0;
+          background-color: ${scrollY > 0 ? "#0A123A" : "white"};
+          transition: width 0.4s;
+        }
+
+        .header-navbar a:hover::after {
+          width: 100%;
+        }
+
+        @media screen and (max-width: 55em) {
+          .header-navbar {
+            position: fixed;
+            margin: 0;
+            background: white;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2em;
+            padding: 10rem 3rem;
+            inset: 0 0 0 40%;
+            transform: translateX(100%);
+            transition: transform 0.35s ease-out;
+          }
+
+          .header-navbar[data-visible="true"] {
+            transform: translateX(0%);
+          }
+
+          .header-navbar a {
+            font-size: 1.5em;
+            color: #0A123A;
+          }
+
+          .header-navbar a::after {
+            background-color: #0A123A;
+            bottom: -8px;
+            height: 3px;
+          }
+
+          .mobile-navbar-toggle {
+            display: block;
+            border: 0;
+            position: fixed;
+            z-index: 9999;
+            background: url('/images/menu_black_24dp.svg');
+            background-size: 2rem;
+            background-repeat: no-repeat;
+            ${scrollY == 0 && !navbarVisible ?
+              "filter: invert(98%) sepia(12%) saturate(265%) hue-rotate(324deg) brightness(119%) contrast(100%);" : ""}
+            width: 2rem;
+            aspect-ratio: 1;
+            top: 3rem;
+            right: 3rem;
+          }
+          
+          .mobile-navbar-toggle:hover {
+            cursor: pointer;
+          }
+        }
+      `}</style>
     </header>
   )
 }
 
 function HomeSection() {
   return (
-    <section className={styles.home}>
+    <section id="#home" className={styles.home}>
       <div className={styles.home_container +  " " + styles.content}>
         <div className={styles.home_content}>
           <h2>Le cyber-harcèlement ne cesse de fragiliser le lien social.</h2>
@@ -66,7 +230,8 @@ function HomeSection() {
             avoir déjà été confrontés à <span className='underline'>une situation de cyber-harcèlement</span>{' '}
             (suite à une étude réalisée par e-Enfance et la Caisse d’épargne)
           </p>
-          <button className="dark-contained-button">En apprendre plus</button>
+
+          <a href="#numbers" className="dark-contained-button">En apprendre plus</a>
         </div>
         
         <div className={styles.home_illustration_parent}>
@@ -88,12 +253,18 @@ function HomeSection() {
 //       to figure it out but there are still the bugs although in another workspace, and with vanilla js (so no react), it worked
 //       If someone passes by here and knows how to fix these issues, it wouldn't turn it down.
 //       But I think it has to do with how messy my code is :c
+
+// UPDATE: It seems like SwiperJS don't like loop with autoplay and others settings.
+
+// UPDATE 2: It's fix! I'm so happy! So, the bug was that it was messing with default css of swiper.
+//           So now, I edit the style of swiper's css classes from global.css.
 function NumbersSection() {
   const Wave1 = WaveDef("#ffffff", "#0057FF", "0 0 1440 320", "M0,64L80,74.7C160,85,320,107,480,112C640,117,800,107,960,122.7C1120,139,1280,181,1360,202.7L1440,224L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z");
   const Wave2 = WaveDef("#ffffff", "#0057FF", "0 0 1440 320", "M0,64L80,85.3C160,107,320,149,480,138.7C640,128,800,64,960,37.3C1120,11,1280,21,1360,26.7L1440,32L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z");
   
   return (
     <WaveSection
+    id = "numbers"
     Wave1={Wave1}
     Wave2={Wave2}
     marginTop={20}
@@ -103,23 +274,23 @@ function NumbersSection() {
     >
       <h2>Chiffres</h2>
 
-      <div className="swiper-container">
+      <div>
         <Swiper
-          modules={[Navigation, Pagination]}
-          loop
+          modules={[Navigation, Pagination, Autoplay]}
+          rewind
+          spaceBetween={20}
           autoplay={{
-            delay: 100,
+            delay: 10000,
             disableOnInteraction: true
           }}
           breakpoints={{
             600: {
               slidesPerView: 1,
-              centerInsufficientSlides: true
             },
-            1200: {
+            800: {
               slidesPerView: 2,
             },
-            1800: {
+            1000: {
               slidesPerView: 3,
             },
           }}
@@ -131,20 +302,19 @@ function NumbersSection() {
             el: '.swiper-pagination',
             clickable: true,
           }}
-          className={"swiper"}
         >
-          <SwiperSlide key={"1"} className="swiper-slide">
-            <img src="https://www.solidarites.org/wp-content/uploads/2016/10/chiffre-cle-8.jpg" alt="Test" />
-
-            <div className="swiper-slide-text color-white">
-              <h6>2,6</h6>
-              <p>
-                <strong>millions de personnes meurent chaque année</strong>
-                {' '}des suites de maladies liées à l&apos;eau insalubre.
-              </p>
+          <SwiperSlide key={"1"}>
+              <img src="https://www.solidarites.org/wp-content/uploads/2016/10/chiffre-cle-8.jpg" alt="Test" />
+              
+              <div className="swiper-slide-text color-white">
+                <h6>2,6</h6>
+                <p>
+                  <strong>millions de personnes meurent chaque année</strong>
+                  {' '}des suites de maladies liées à l&apos;eau insalubre.
+                </p>
             </div>
           </SwiperSlide>
-          <SwiperSlide key={"2"} className="swiper-slide">
+          <SwiperSlide key={"2"}>
             <img src="https://www.solidarites.org/wp-content/uploads/2016/10/chiffre-cle-1.jpg" alt="Test" />
             
             <div className="swiper-slide-text color-white">
@@ -155,7 +325,7 @@ function NumbersSection() {
               </p>
             </div>
           </SwiperSlide>
-          <SwiperSlide key={"3"} className="swiper-slide">
+          <SwiperSlide key={"3"}>
             <img src="https://www.solidarites.org/wp-content/uploads/2016/10/chiffre-cle-4.jpg" alt="Test" />
             
             <div className="swiper-slide-text color-white">
@@ -166,7 +336,7 @@ function NumbersSection() {
               </p>
             </div>
           </SwiperSlide>
-          <SwiperSlide key={"4"} className="swiper-slide">
+          <SwiperSlide key={"4"}>
             <img src="https://www.solidarites.org/wp-content/uploads/2016/10/chiffre-cle-5.jpg" alt="Test" />
             
             <div className="swiper-slide-text color-white">
@@ -186,19 +356,11 @@ function NumbersSection() {
       </div>
 
       <div className="button-container">
-        <button className="light-contained-button">C&apos;est quoi ?</button>
+        <a href="#what-is-it" className="light-contained-button">C&apos;est quoi le <br /> cyber-harcèlement ?</a>
       </div>
       <style jsx>{`
-        .swiper-container {
-          box-sizing: border-box;
-        }
-
-        .swiper {
-          box-sizing: border-box;
-        }
-
         .swiper-pagination {
-          bottom: 70px;
+          bottom: 100px;
         }
 
         .swiper-button-prev {
@@ -212,36 +374,10 @@ function NumbersSection() {
           left: calc(100vw / 2 + min(75rem / 2, 85vw / 2) + 30px)
         }
 
-        .swiper-slide {
-          position: absolute;
-          text-align: center;
-          font-size: 1em;
-          background: #fff;
-          box-sizing: border-box;
-        }
-
-        .swiper-slide img {
-          display: block;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .swiper-slide::before {
-          content: '';
-          position:absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: radial-gradient(200% 200% at 60% 20%, transparent 10%, black 100%);
-          z-index: 3;
-        }
-        
         .swiper-slide-text {
           color: white;
           position: absolute;
-          bottom: 1.5em;
+          bottom: 0.5em;
           left: 2em;
           width: 300px;
           text-align: left;
@@ -250,8 +386,9 @@ function NumbersSection() {
         
         .swiper-slide-text h6 {
           font-size: 4em;
+          line-height: 1em;
           font-weight: 700;
-          margin-bottom: 0;
+          margin-bottom: -0.3em;
         }
         .swiper-slide-text p {
           font-size: 1.5em;
@@ -265,12 +402,11 @@ function NumbersSection() {
 
         h2 {
           color: #0A123A;
-          font-size: 2em;
         }
         
         .button-container {
-          margin-top: 50px;
-          margin-bottom: -40px;
+          margin-top: 60px;
+          margin-bottom: -25px;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -285,6 +421,7 @@ function WhatIsItSection() {
 
   return (
     <WaveSection
+      id="what-is-it"
       Wave1={null}
       Wave2={Wave2}
       marginTop={-160}
@@ -352,6 +489,9 @@ function WhatIsItSection() {
               src="/images/law_sentences.png" 
               width="100%"
               height="auto"
+              style={{
+                maxWidth: "22.5em"
+              }}
               alt="Law sentences"
             />
 
@@ -362,7 +502,7 @@ function WhatIsItSection() {
           </div>
         </div>
         
-        <button className="dark-contained-button">Voir des exemples de <br /> cyber-harcèlement</button>
+        <a href="#examples" className="dark-contained-button">Voir des exemples de <br /> cyber-harcèlement</a>
       </div>
 
       <style jsx>{`
@@ -384,8 +524,6 @@ function WhatIsItSection() {
           width: 100%;
           padding: 32px 40px;
           border-radius: 16px;
-          font-size: 1.25em;
-          line-height: 1.25em;
         }
 
         .card-head {
@@ -397,100 +535,78 @@ function WhatIsItSection() {
         }
 
         .card h3 {
-          font-size: 1.75em;
+          font-size: 1.5em;
         }
 
         .card hr {
           border-top: 3px solid #0A123A;
         }
 
-        h2 {
-          font-size: 2em;
-          line-height: 1.1em;
+        @media screen and (max-width: 1200px) {
+          .card-container {
+            flex-direction: column;
+          }
+
+          .card {
+            width: auto;
+          }
         }
       `}</style>
     </WaveSection>
   )
 }
 
+function ExampleCard({ children, id, profileUrl, name, text }) {
+  const [showModal, setShowModal] = useState(false);
 
-function ExamplesSection() {
   return (
-    <WaveSection
-      marginTop={-160}
-      contentMarginTop={-60}
-      backgroundColor={"#E5E7F2"}
-    >      
-      <div className="container">
-        <h2>
-          Exemples de cyber-harcèlement
-        </h2>
-        
-        <div className="card-container">
-          <div className="card">
-            <div className="card-head">
-              <img 
-                src="/images/bilal_hassani.png" 
-                alt="Book icon"
-              />
-              <div className="card-head-right">
-                <h3>Bilal Hassani</h3>
-                <hr />
-              </div>
-            </div>
-
-            <p>
-              Bilal Hassani, d’origine marocaine, est un jeune homme de 22 ans venu petit s’installer en France avec sa mère et son frère. Il est maintenant influenceur, chanteur, auteur-compositeur et youtubeur sur Twitteur et Youtube avec plus d’un million d’abonnés. En 2017, Bilil va faire son coming out la veille de la Gay Pride 2017. La Gay Pride est une marche des fiertés LGBT (Lesbiennes, Gays, Bisexuelles, Transgenre et autre. En effet, cette année, B. Hassani va publier sur Twitter une chanson annonçant son homosexualité. Ses plus grands fans lui resteront fidèles mais va également être victime de cyber-harcèlement, d’attaques 
-            </p>
-
-            <button className="read-more">Lire la suite</button>
-          </div>
-          <div className="card">
-            <div className="card-head">
-              <img 
-                src="/images/bilal_hassani.png" 
-                alt="Book icon"
-              />
-              <div className="card-head-right">
-                <h3>Bilal Hassani</h3>
-                <hr />
-              </div>
-            </div>
-
-            <p>
-              Bilal Hassani, d’origine marocaine, est un jeune homme de 22 ans venu petit s’installer en France avec sa mère et son frère. Il est maintenant influenceur, chanteur, auteur-compositeur et youtubeur sur Twitteur et Youtube avec plus d’un million d’abonnés. En 2017, Bilil va faire son coming out la veille de la Gay Pride 2017. La Gay Pride est une marche des fiertés LGBT (Lesbiennes, Gays, Bisexuelles, Transgenre et autre. En effet, cette année, B. Hassani va publier sur Twitter une chanson annonçant son homosexualité. Ses plus grands fans lui resteront fidèles mais va également être victime de cyber-harcèlement, d’attaques 
-            </p>
-
-            <button className="read-more">Lire la suite</button>
+    <>
+      <div className="card">
+        <div className="card-head">
+          <img 
+            src={profileUrl} 
+            alt="Book icon"
+          />
+          <div className="card-head-right">
+            <h3>{name}</h3>
+            <hr />
           </div>
         </div>
-        
-        <button className="dark-outlined-button">
-          Découvrir les conséquences <br />
-          du cyber-harcèlement
-        </button>
+
+        <p>
+          {text}
+        </p>
+
+        <button onClick={() => setShowModal(true)} className="read-more">Lire la suite</button>
+      </div>
+
+      <div id={id} className="modal">
+        <div className="modal-card">
+          <div className="modal-head">
+            <img 
+              src={profileUrl} 
+              alt="Book icon"
+              />
+            <div className="modal-head-right">
+              <h3>{name}</h3>
+              <hr />
+            </div>
+          </div>
+
+          <div className="modal-content">
+            {children}
+          </div>
+
+          <button onClick={() => setShowModal(false)} className="modal-close">&times;</button>
+        </div>
       </div>
 
       <style jsx>{`
-        .container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          color: #0A123A;
-        }
-
-        .card-container {
-          display: flex;
-          gap: 3em;
-        }
-
         .card {
           background: white;
           width: 100%;
-          padding: 32px 40px;
+          padding: 2.5rem 3rem;
           border-radius: 16px;
-          font-size: 1.25em;
-          line-height: 1.25em;
           box-shadow: 0px 6px 23px rgba(0, 0, 0, 0.25);
         }
 
@@ -515,7 +631,7 @@ function ExamplesSection() {
 
         .card-head-right > hr {
           border-top: 3px solid #0A123A;
-          margin-top: -24px;
+          margin-top: -22px;
         }
 
         .card h3 {
@@ -524,6 +640,7 @@ function ExamplesSection() {
 
         .card > p {
           position: relative;
+          margin-top: 32px;
         }
 
         .card > p:after {
@@ -550,16 +667,12 @@ function ExamplesSection() {
           border-radius: 500px;
         }
 
-        h2 {
-          font-size: 2em;
-          line-height: 1.1em;
-        }
-
         .read-more::before {
           content: '→ '
         }
-        
+
         .read-more {
+          position: relative;
           background: transparent;
           font-family: Roboto, sans-serif;
           font-size: 1em;
@@ -570,15 +683,254 @@ function ExamplesSection() {
         }
 
         .read-more:hover {
-          text-decoration: underline;
+          cursor: pointer;
+        }
+        
+        .read-more::after {
+          content: '';
+          position: absolute;
+          width: 0%;
+          height: 2px;
+          bottom: -2px;
+          left: 1.5em;
+          right: 0;
+          background-color: #0057FF;
+          transition: width 0.3s;
+        }
+
+        .read-more:hover::after {
+          width: calc(100% - 1.5em);
+        }
+
+        .modal {
+          visibility: ${showModal ? "visible" : "hidden"};
+          opacity: ${showModal ? 1 : 0};
+          transition: opacity 0.25s;
+          position: fixed;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          top: 0;
+          right: 0;
+          left: 0;
+          height: 100%;
+          bottom: 0;
+          z-index: 10;
+          background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-card {
+          width: 85vw;
+          max-width: 45rem;
+          background: white;
+          padding: 2.5rem 3rem;
+          border-radius: 16px;
+          box-shadow: 0px 6px 23px rgba(0, 0, 0, 0.25);
+          position: relative;
+          color: #0A123A;
+        }
+
+        .modal-close {
+          position: absolute;
+          top: 0.75em;
+          right: 1em;
+          font-size: 2em;
+          color: #0A123A;
+          background: transparent;
+          border: 0;
+        }
+
+        .modal-close {
+          cursor: pointer;
+        }
+
+        .modal-head {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 8px;
+          margin: -16px 0;
+        }
+
+        .modal-head {
+          font-size: 1.75em;
+        }
+
+        .modal-head-right {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          margin-top: -12px;
+        }
+
+        .modal-head-right > * {
+          width: 100%;
+        }
+
+        .modal-head-right > hr {
+          border-top: 3px solid #0A123A;
+          margin-top: -22px;
+        }
+
+        .modal-head > img {
+          max-width: 80px;
+          max-height: 80px;
+          min-width: 80px;
+          min-height: 80px;
+          object-fit: cover;
+          filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.25));
+          border-radius: 500px;
+        }
+
+        .modal-content {
+          margin-top: 32px;
+        }
+        
+        @media screen and (max-width: 1200px) {
+          .card {
+            width: auto;
+          }
+        }
+      `}</style>
+    </>
+  )
+}
+
+function ExamplesSection() {
+  return (
+    <WaveSection
+      id="examples"
+      marginTop={-160}
+      contentMarginTop={-60}
+      backgroundColor={"#E5E7F2"}
+    >
+      <div className="container">
+        <h2>Exemples de cyber-harcèlement</h2>
+
+        <div className="card-container">
+          <ExampleCard
+            profileUrl={"/images/bilal_hassani.png"}
+            name={"Bilal Hassani"}
+            text={`
+              Bilal Hassani, d’origine marocaine, est un jeune homme de 22 ans venu petit s’installer en France avec sa mère et son frère.
+              Il est maintenant influenceur, chanteur, auteur-compositeur et youtubeur sur Twitteur et Youtube avec plus d’un million d’abonnés. 
+              En 2017, Bilil va faire son coming out la veille de la Gay Pride 2017. La Gay Pride est une marche des fiertés LGBT 
+              (Lesbiennes, Gays, Bisexuelles, Transgenre et autre. En effet, cette année, B. Hassani va publier sur Twitter une
+              chanson annonçant son homosexualité. Ses plus grands fans lui resteront fidèles mais va également être victime de 
+              cyber-harcèlement, d’attaques 
+            `}
+          >
+            <p>
+              {`Bilal Hassani, d’origine marocaine, est un jeune homme de 22 ans
+              venu petit s’installer en France avec sa mère et son frère. Il est
+              maintenant influenceur, chanteur, auteur-compositeur et youtubeur
+              sur Twitteur et Youtube avec plus d’un million d’abonnés. En 2017,
+              Bilil va faire son coming out la veille de la Gay Pride 2017. La
+              Gay Pride est une marche des fiertés LGBT (Lesbiennes, Gays,
+              Bisexuelles, Transgenre et autre. En effet, cette année, B.
+              Hassani va publier sur Twitter une chanson annonçant son
+              homosexualité. Ses plus grands fans lui resteront fidèles mais va
+              également être victime de cyber-harcèlement, d’attaques racistes,
+              homophobes voir jusqu’à des menaces de mort. Mais, déterminé, il
+              va opter un nouveau look plus “féministe” en portants des péruques
+              longues de couleur et des vêtements pour femmes. Mais en 2019,
+              Bilal Hassani être innondé de manaces et d’actes de harcèlement dû
+              à sa participation à l’Eurovision. En effet il a été élu grâce à
+              ses followers et son côté touchant pour certains mais les
+              critiques ont afflué. En guise de réponse, il déclare sur France 2
+              « C'est une fierté pour moi de représenter mon pays en étant 100 %
+              moi-même, malgré des fois des gens qui ont pu me dire sur Internet
+              ou autre que je ne représentais pas la France, avait-il déclaré au
+              lendemain de sa victoire sur France 2. Il y a beaucoup de haine,
+              il y a beaucoup de choses qui pourraient m'affaiblir et me donner
+              l'impression que je devrais arrêter ou me brider, m'auto-censurer.
+              »`}
+              <br />
+              <br />
+              {`Il portera finalement plainte pour “injures et provocation à la
+              haine et à la violence et menaces homophobes”. Aujourd’hui encore,
+              il continu d’apparaître dans les grandes émissions et à gagner en
+              influence sur les réseaux sociaux.`}
+            </p>
+          </ExampleCard>
+          <ExampleCard
+            profileUrl={"/images/bilal_hassani.png"}
+            name={"Bilal Hassani"}
+            text={`
+              Bilal Hassani, d’origine marocaine, est un jeune homme de 22 ans venu petit s’installer en France avec sa mère et son frère.
+              Il est maintenant influenceur, chanteur, auteur-compositeur et youtubeur sur Twitteur et Youtube avec plus d’un million d’abonnés. 
+              En 2017, Bilil va faire son coming out la veille de la Gay Pride 2017. La Gay Pride est une marche des fiertés LGBT 
+              (Lesbiennes, Gays, Bisexuelles, Transgenre et autre. En effet, cette année, B. Hassani va publier sur Twitter une
+              chanson annonçant son homosexualité. Ses plus grands fans lui resteront fidèles mais va également être victime de 
+              cyber-harcèlement, d’attaques 
+            `}
+          >
+          <p>
+            {`Bilal Hassani, d’origine marocaine, est un jeune homme de 22 ans
+            venu petit s’installer en France avec sa mère et son frère. Il est
+            maintenant influenceur, chanteur, auteur-compositeur et youtubeur
+            sur Twitteur et Youtube avec plus d’un million d’abonnés. En 2017,
+            Bilil va faire son coming out la veille de la Gay Pride 2017. La
+            Gay Pride est une marche des fiertés LGBT (Lesbiennes, Gays,
+            Bisexuelles, Transgenre et autre. En effet, cette année, B.
+            Hassani va publier sur Twitter une chanson annonçant son
+            homosexualité. Ses plus grands fans lui resteront fidèles mais va
+            également être victime de cyber-harcèlement, d’attaques racistes,
+            homophobes voir jusqu’à des menaces de mort. Mais, déterminé, il
+            va opter un nouveau look plus “féministe” en portants des péruques
+            longues de couleur et des vêtements pour femmes. Mais en 2019,
+            Bilal Hassani être innondé de manaces et d’actes de harcèlement dû
+            à sa participation à l’Eurovision. En effet il a été élu grâce à
+            ses followers et son côté touchant pour certains mais les
+            critiques ont afflué. En guise de réponse, il déclare sur France 2
+            « C'est une fierté pour moi de représenter mon pays en étant 100 %
+            moi-même, malgré des fois des gens qui ont pu me dire sur Internet
+            ou autre que je ne représentais pas la France, avait-il déclaré au
+            lendemain de sa victoire sur France 2. Il y a beaucoup de haine,
+            il y a beaucoup de choses qui pourraient m'affaiblir et me donner
+            l'impression que je devrais arrêter ou me brider, m'auto-censurer.
+            »`}
+            <br />
+            <br />
+            {`Il portera finalement plainte pour “injures et provocation à la
+            haine et à la violence et menaces homophobes”. Aujourd’hui encore,
+            il continu d’apparaître dans les grandes émissions et à gagner en
+            influence sur les réseaux sociaux.`}
+          </p>
+          </ExampleCard>
+        </div>
+
+        <button className="dark-outlined-button">
+          Découvrir les conséquences <br />
+          du cyber-harcèlement
+        </button>
+      </div>
+
+      <style jsx>{`
+        .container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          color: #0a123a;
+        }
+
+        .card-container {
+          display: flex;
+          gap: 3em;
         }
 
         .container > button {
           margin-top: 30px;
         }
+
+        @media screen and (max-width: 1200px) {
+          .card-container {
+            flex-direction: column;
+          }
+        }
       `}</style>
     </WaveSection>
-  )
+  );
 }
 
 
@@ -610,7 +962,7 @@ function Footer() {
         </div>
 
         <div className="footer-right">
-          <navbar className={styles.header_navbar}>
+          <nav className={styles.header_navbar}>
             <a>
               Accueil
             </a>
@@ -629,7 +981,7 @@ function Footer() {
             <a>
               Que faire ?
             </a>
-          </navbar>
+          </nav>
 
           <p>
             Ce site web a été réalisé par François SIGOIGNET et Tom GOBICHON dans le cadre des cours d’EMC. 
@@ -657,24 +1009,18 @@ function Footer() {
         .link {
           color: #2D74FF;
         }
+
+        .link:hover {
+          text-decoration: underline;
+        }
+
+        nav {
+          flex-wrap: wrap;
+        }
       `}</style>
     </WaveSection>
   )
 }
-
-/*
-
-    <section className={styles.numbers}>
-      <svg className={styles.wave_drop_shadow} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#ffffff" fillOpacity="1" d="M0,32L60,58.7C120,85,240,139,360,176C480,213,600,235,720,229.3C840,224,960,192,1080,202.7C1200,213,1320,267,1380,293.3L1440,320L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
-      </svg>
-      <div className={styles.numbers_container}>
-        <div className={styles.numbers_content + " " + styles.content}>
-          <h2>Chiffres</h2>
-        </div>
-      </div>
-    </section>
-*/
 
 export default function Home() {
   return (
