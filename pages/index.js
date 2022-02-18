@@ -100,13 +100,14 @@ function Header() {
           justify-content: center;
           ${scrollY > 0 && "background: white;"}
           transition: background-color 0.5s;
+          ${scrollY > 0 && "height: 100px;"}
           width: 100vw;
         }
 
         .header-content {
           display: flex;
           justify-content: space-between;
-          padding: 1.5rem 0;
+          padding: ${scrollY > 0 ? "0.8em" : "1.5rem"} 0;
           z-index: 1;
           width: 85vw;
           max-width: 75rem;
@@ -206,7 +207,7 @@ function Header() {
               "filter: invert(98%) sepia(12%) saturate(265%) hue-rotate(324deg) brightness(119%) contrast(100%);" : ""}
             width: 3rem;
             aspect-ratio: 1;
-            top: 2.5rem;
+            top: ${scrollY > 0 ? "2rem" : "2.5em"};
             right: 3rem;
           }
           
@@ -728,6 +729,9 @@ function ExampleCard({ children, id, profileUrl, name, text }) {
           border-radius: 16px;
           box-shadow: 0px 6px 23px rgba(0, 0, 0, 0.25);
           position: relative;
+          margin-top: 100px;
+          margin-bottom: 0;
+          overflow: auto;
           color: #0A123A;
         }
 
@@ -785,8 +789,7 @@ function ExampleCard({ children, id, profileUrl, name, text }) {
         }
 
         .modal-content {
-          margin-top: 12px;
-          overflow: auto;
+          margin-top: 24px;
           height: 40vh;
           max-height: 40rem;
         }
