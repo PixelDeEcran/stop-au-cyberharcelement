@@ -18,7 +18,9 @@ function Header() {
 
   useEffect(() => {
     const onScroll = e => {
-      setScrollY(window.scrollY);
+      if (document.querySelector('body').style.position !== 'fixed') {
+        setScrollY(window.scrollY);
+      }
     };
     window.addEventListener("scroll", onScroll);
 
