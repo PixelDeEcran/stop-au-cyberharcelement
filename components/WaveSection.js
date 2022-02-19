@@ -27,7 +27,7 @@ export function WaveDef(color, backgroundColor, viewBox, pathData) {
 }
 
 // This is not perfect at all, but at least it works! (so much pain to make it work ;-;)
-export function WaveSection({ children, id, Wave1, Wave2, marginTop, contentMarginTop, backgroundColor, type = "section" }) {
+export function WaveSection({ children, id, Wave1, Wave2, marginTop, contentMarginTop, backgroundColor, type = "section", zIndex = 1 }) {
   const ElementName = type;
 
   return (
@@ -45,13 +45,15 @@ export function WaveSection({ children, id, Wave1, Wave2, marginTop, contentMarg
       <style jsx>{`
         .root {
           margin-top: ${marginTop}px;
+          z-index = ${zIndex};
         }
 
         .container {
           padding: 30px 0;
+          margin-top: -1px; /* For pixel perfect, sometimes, there is a small blank like between wave and section's container */
           position: relative;
           background-color: ${backgroundColor};
-          z-index: 1;
+          z-index: ${zIndex + 1};
           display: flex;
           justify-content: center;
         }

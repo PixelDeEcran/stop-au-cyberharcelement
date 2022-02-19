@@ -560,6 +560,38 @@ function WhatIsItSection() {
 function ExampleCard({ children, id, profileUrl, name, text }) {
   const [showModal, setShowModal] = useState(false);
 
+  useEffect(() => {
+    const body = document.querySelector("body");
+    const html = document.querySelector('html');
+
+    if (showModal) {
+      const scrollY = window.scrollY;
+
+      body.style.position = 'fixed';
+      body.style.top = `-${scrollY}px`;
+      body.style.left = `0`;
+      body.style.width = "100%"
+      body.style.overflowX = 'hidden';
+      body.style.overflowY = 'scroll';
+    } else {
+      const scrollY = body.style.top;
+      body.style.position = '';
+      body.style.top = '';
+      body.style.left = '';
+      body.style.overflowX = '';
+      body.style.overflowY = '';
+      html.style.scrollBehavior = 'auto';
+
+      window.scrollTo({
+        left: 0, 
+        top: parseInt(scrollY || '0') * -1,
+        behavior: 'auto' // this option is not working for unknown reason
+      });
+
+      html.style.scrollBehavior = '';
+    }
+  })
+
   return (
     <>
       <div className="card">
@@ -811,6 +843,7 @@ function ExamplesSection() {
       marginTop={-160}
       contentMarginTop={-60}
       backgroundColor={"#E5E7F2"}
+      zIndex={100} // So modal are in top of the others sections
     >
       <div className="container">
         <h2>Exemples de cyber-harcèlement</h2>
@@ -908,10 +941,10 @@ function ExamplesSection() {
           </ExampleCard>
         </div>
 
-        <button className="dark-outlined-button">
+        <a href="#consequences" className="dark-outlined-button">
           Découvrir les conséquences <br />
           du cyber-harcèlement
-        </button>
+        </a>
       </div>
 
       <style jsx>{`
@@ -927,12 +960,307 @@ function ExamplesSection() {
           gap: 3em;
         }
 
-        .container > button {
-          margin-top: 30px;
+        .container > a {
+          margin-top: 40px;
+          margin-bottom: -20px;
         }
 
         @media screen and (max-width: 1200px) {
           .card-container {
+            flex-direction: column;
+          }
+        }
+      `}</style>
+    </WaveSection>
+  );
+}
+
+function ConsequencesSection() {
+  const Wave1 = WaveDef("#0057FF", "#E5E7F2", "0 0 1440 320", "M0,160L120,138.7C240,117,480,75,720,96C960,117,1200,203,1320,245.3L1440,288L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z");
+
+  return (
+    <WaveSection
+      id="consequences"
+      Wave1={Wave1}
+      Wave2={null}
+      marginTop={-85}
+      contentMarginTop={-120}
+      backgroundColor={"#0057FF"}
+    >
+      <h2>
+        Les conséquences<br />
+        du cyber-harcèlement
+      </h2>
+      
+      <div className="container">
+        <div className="short-consequences-container">
+          <div className="card">
+            <div className="card-head">
+              <Image 
+                src="/images/psychology_black_24dp.svg" 
+                width={52}
+                height={48}
+                alt="Psychology icon"
+              />
+              <h3>Conséquences psychiques</h3>
+            </div>
+            
+            <hr />
+
+            <p>
+              Sentiments de culpabilité, d’impuissance, de dévalorisation de sa personne, anxiété, honte, perte d’estime de soi, phobie, dépression...
+            </p>
+          </div>
+          <div className="card">
+            <div className="card-head">
+              { /* I don't know why but nextjs' image behave in a weird way */ }
+              { /* eslint-disable-next-line @next/next/no-img-element */ }
+              <img 
+                src="/images/boy_black_24dp.svg" 
+                width="54px"
+                height="54px"
+                alt="Boy icon"
+              />
+              <h3>Conséquences physiques</h3>
+            </div>
+            
+            <hr />
+
+            <p>
+              Absence de sommeil, nervosité ou manque d’énergie, 
+              vertige, fatigue intense, migraines, perte de mémoire, 
+              troubles alimentaires, mutilations corporelles…<br />
+              <br />
+              Les troubles physiques sont parfois plus visibles que les psychiques, 
+              mais révèlent souvent l’existence d’un mal-être psychologique. 
+            </p>
+          </div>
+        </div>
+        
+        <div className="long-term-consequences">
+          <div className="card">
+            <div className="card-head">
+              { /* I don't know why but nextjs' image behave in a weird way */ }
+              { /* eslint-disable-next-line @next/next/no-img-element */ }
+              <img 
+                src="/images/groups_black_24dp.svg" 
+                width="48px"
+                height="48px"
+                alt="Boy icon"
+              />
+              <h3>Conséquences à long terme</h3>
+            </div>
+            
+            <hr />
+
+            <p>
+              Le cyberharcèlement peut fragiliser le lien social. 
+              En effet, l’anonymat que procure le cyberharcèlement 
+              peut avoir un incident sur la confiance de la victime.
+              Elle peut ne plus savoir vers qui se dirigé et lui 
+              causé des problèmes lors d’échanges avec des personnes 
+              qui lui sont inconnues.<br />
+              <br /> 
+              Il peut s’ensuivre des maladies psychologiques comme 
+              par exemple une phobie scolaire où la victime se renferme 
+              sur elle-même et est dans l’incapacité de retourné à l’école. 
+            </p>
+          </div>
+
+          <a href="#what-to-do" className="dark-contained-button">
+            Que faire contre<br />
+            le cyber-harcèlement ?
+          </a>
+        </div>
+      </div>
+
+      <style jsx>{`
+        .container {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 5rem;
+        }
+
+        .short-consequences-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 3em;
+          color: #0A123A;
+        }
+
+        .short-consequences-container > .card {
+          min-width: 20rem;
+          width: 60%;
+        }
+
+        .long-term-consequences {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 3em;
+          color: #0A123A;
+        }
+
+        .container > * {
+          width: 100%;
+        }
+
+        .card {
+          background: white;
+          width: 90%;
+          padding: 24px 28px;
+          border-radius: 16px;
+        }
+
+        .card-head {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 8px;
+          margin: -16px 0;
+        }
+
+        .card h3 {
+          font-size: 1.5em;
+          line-height: 1em;
+        }
+
+        .card hr {
+          border-top: 3px solid #0A123A;
+        }
+
+        @media screen and (max-width: 900px) {
+          .container {
+            flex-direction: column;
+          }
+
+          .card {
+            width: 75vw;
+          }
+          
+          .short-consequences-container > .card {
+            width: 75vw;
+            max-width: 75vw;
+          }
+        }
+      `}</style>
+    </WaveSection>
+  )
+}
+
+function WhatToDoSection() {
+  const Wave1 = WaveDef("#FFFFFF", "#0057FF", "0 0 1440 320", "M0,64L120,85.3C240,107,480,149,720,149.3C960,149,1200,107,1320,85.3L1440,64L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z");
+
+  return (
+    <WaveSection
+      id="what-to-do"
+      Wave1={Wave1}
+      Wave2={null}
+      marginTop={-120}
+      contentMarginTop={-120}
+      backgroundColor={"#FFFFFF"}
+    >
+      <h2>
+        Les conséquences
+        <br />
+        du cyber-harcèlement
+      </h2>
+
+      <div className="container">
+        <div className="section">
+          <h3>Si vous êtes victime</h3>
+          
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mi
+            nunc, lacinia efficitur dolor vel, interdum mollis sapien. Sed
+            maximus leo ipsum, a gravida risus malesuada sit amet. Sed sed
+            ullamcorper tellus. Phasellus lobortis libero ut sem dapibus, vitae
+            faucibus magna fringilla. Vestibulum quam purus, elementum non nulla
+            vel, convallis mollis quam. Sed sed sodales justo. Praesent semper
+            maximus justo et hendrerit. In id arcu quis erat gravida imperdiet
+            quis eu neque. Fusce arcu lectus, congue quis rutrum eu, maximus
+            porta lorem. Pellentesque commodo dui purus, id feugiat turpis
+            accumsan at. <br /> 
+            <br />
+            Quisque vitae lacus ullamcorper, molestie massa eget,
+            vulputate ex. Curabitur porta mattis ultrices. Interdum et malesuada
+            fames ac ante ipsum primis in faucibus. Duis porttitor dui ut lectus
+            hendrerit aliquam. Cras nec mattis dui, in pellentesque leo. Sed
+            quis velit luctus, tincidunt dui sit amet, congue nisi.
+          </p>
+        </div>
+
+        <div className="divider"></div>
+
+        <div className="section">
+          <h3>Si vous êtes témoin</h3>
+
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mi
+            nunc, lacinia efficitur dolor vel, interdum mollis sapien. Sed
+            maximus leo ipsum, a gravida risus malesuada sit amet. Sed sed
+            ullamcorper tellus. Phasellus lobortis libero ut sem dapibus, vitae
+            faucibus magna fringilla. Vestibulum quam purus, elementum non nulla
+            vel, convallis mollis quam. Sed sed sodales justo. Praesent semper
+            maximus justo et hendrerit. In id arcu quis erat gravida imperdiet
+            quis eu neque. Fusce arcu lectus, congue quis rutrum eu, maximus
+            porta lorem. Pellentesque commodo dui purus, id feugiat turpis
+            accumsan at.<br /> 
+            <br />
+            Quisque vitae lacus ullamcorper, molestie massa eget,
+            vulputate ex. Curabitur porta mattis ultrices. Interdum et malesuada
+            fames ac ante ipsum primis in faucibus. Duis porttitor dui ut lectus
+            hendrerit aliquam. Cras nec mattis dui, in pellentesque leo. Sed
+            quis velit luctus, tincidunt dui sit amet, congue nisi.
+          </p>
+        </div>
+      </div>
+
+      <style jsx>{`
+        * {
+          color: #0a123a;
+        }
+
+        .container {
+          display: flex;
+          flex-direction: row;
+          align-items: stretch;
+          margin-top: -1rem;
+          gap: 2rem;
+          width: 100%;
+          flex: 1;
+        }
+
+        .section {
+          width: 100%;
+        }
+
+        .section h3 {
+          text-align: center;
+          font-size: 1.5em;
+          font-weight: 500;
+        }
+
+        .section p {
+          font-size: 1.2em;
+          line-height: 1.1em;
+          text-align: justify;
+        }
+
+        .divider {
+          background-color: #0a123a;
+          width: 4px;
+        }
+
+        @media screen and (max-width: 900px) {
+          .divider {
+            width: 100%;
+            height: 3px;
+          }
+
+          .container {
             flex-direction: column;
           }
         }
@@ -948,7 +1276,7 @@ function Footer() {
   return (
     <WaveSection
       Wave1={Wave1}
-      marginTop={-80}
+      marginTop={-190}
       contentMarginTop={0}
       backgroundColor={"#0A123A"}
       type="footer"
@@ -1060,6 +1388,8 @@ export default function Home() {
         <NumbersSection />
         <WhatIsItSection />
         <ExamplesSection />
+        <ConsequencesSection />
+        <WhatToDoSection />
 
         <Footer />
       </main>
