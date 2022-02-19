@@ -51,7 +51,7 @@ function Header() {
 
           <nav>
             <ul id="header-navbar" data-visible={navbarVisible ? "true" : "false"} className="header-navbar">
-              <a href="#home">
+              <a href="#">
                 Accueil
               </a>
               <a href="#numbers">
@@ -971,22 +971,22 @@ function Footer() {
 
         <div className="footer-right">
           <nav className={styles.header_navbar}>
-            <a>
+            <a href="#">
               Accueil
             </a>
-            <a>
+            <a href="#numbers">
               Chiffres
             </a>
-            <a>
+            <a href="#what-is-it">
               {"C'est quoi ?"}
             </a>
-            <a>
+            <a href="#examples">
               Exemples
             </a>
-            <a>
+            <a href="#consequences">
               Conséquences
             </a>
-            <a>
+            <a href="#what-to-do">
               Que faire ?
             </a>
           </nav>
