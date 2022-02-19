@@ -46,11 +46,13 @@ export function WaveSection({ children, id, Wave1, Wave2, marginTop, contentMarg
         .root {
           margin-top: ${marginTop}px;
           z-index = ${zIndex};
+          margin-bottom: ${-contentMarginTop}px;
         }
 
         .container {
           padding: 30px 0;
           margin-top: -1px; /* For pixel perfect, sometimes, there is a small blank like between wave and section's container */
+          margin-bottom: -1px;
           position: relative;
           background-color: ${backgroundColor};
           z-index: ${zIndex + 1};
@@ -62,10 +64,6 @@ export function WaveSection({ children, id, Wave1, Wave2, marginTop, contentMarg
           width: 85vw;
           max-width: 75rem;
           margin-top: ${contentMarginTop}px;
-        }
-
-        .root {
-          margin-bottom: ${-contentMarginTop}px;
         }
       `}</style>
     </ElementName>
