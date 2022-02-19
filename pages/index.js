@@ -1371,6 +1371,8 @@ export default function Home() {
         <meta property="og:url" content="https://www.cyberharcelement.org/" />
         <meta property="og:description" content="STOP au Cyber-Harcèlement is a wesite to help fighting against cyber harassment." />
         <meta property="og:image" content="images/Logo.png" />
+
+        <meta name="google-site-verification" content="UUPyV-w4tlL-9Ls3qcPTnWlabcdk-aEbSR3-iO6tOXU" />
         
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
