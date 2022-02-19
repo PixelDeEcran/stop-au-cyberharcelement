@@ -304,6 +304,7 @@ function NumbersSection() {
             clickable: true,
           }}
         >
+          { /* The figures come from https://www.solidarites.org/fr/eau-potable/ (we really liked the idea so we kinda stole it) */ }
           <SwiperSlide key={"1"}>
               <img src="https://www.solidarites.org/wp-content/uploads/2016/10/chiffre-cle-8.jpg" alt="Test" />
               
