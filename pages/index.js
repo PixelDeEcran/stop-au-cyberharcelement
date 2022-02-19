@@ -546,7 +546,7 @@ function WhatIsItSection() {
           border-top: 3px solid #0A123A;
         }
 
-        @media screen and (max-width: 1200px) {
+        @media screen and (max-width: 1000px) {
           .card-container {
             flex-direction: column;
           }
@@ -909,38 +909,38 @@ function ExamplesSection() {
               cyber-harcèlement, d’attaques 
             `}
           >
-          <p>
-            {`Bilal Hassani, d’origine marocaine, est un jeune homme de 22 ans
-            venu petit s’installer en France avec sa mère et son frère. Il est
-            maintenant influenceur, chanteur, auteur-compositeur et youtubeur
-            sur Twitteur et Youtube avec plus d’un million d’abonnés. En 2017,
-            Bilil va faire son coming out la veille de la Gay Pride 2017. La
-            Gay Pride est une marche des fiertés LGBT (Lesbiennes, Gays,
-            Bisexuelles, Transgenre et autre. En effet, cette année, B.
-            Hassani va publier sur Twitter une chanson annonçant son
-            homosexualité. Ses plus grands fans lui resteront fidèles mais va
-            également être victime de cyber-harcèlement, d’attaques racistes,
-            homophobes voir jusqu’à des menaces de mort. Mais, déterminé, il
-            va opter un nouveau look plus “féministe” en portants des péruques
-            longues de couleur et des vêtements pour femmes. Mais en 2019,
-            Bilal Hassani être innondé de manaces et d’actes de harcèlement dû
-            à sa participation à l’Eurovision. En effet il a été élu grâce à
-            ses followers et son côté touchant pour certains mais les
-            critiques ont afflué. En guise de réponse, il déclare sur France 2
-            « C'est une fierté pour moi de représenter mon pays en étant 100 %
-            moi-même, malgré des fois des gens qui ont pu me dire sur Internet
-            ou autre que je ne représentais pas la France, avait-il déclaré au
-            lendemain de sa victoire sur France 2. Il y a beaucoup de haine,
-            il y a beaucoup de choses qui pourraient m'affaiblir et me donner
-            l'impression que je devrais arrêter ou me brider, m'auto-censurer.
-            »`}
-            <br />
-            <br />
-            {`Il portera finalement plainte pour “injures et provocation à la
-            haine et à la violence et menaces homophobes”. Aujourd’hui encore,
-            il continu d’apparaître dans les grandes émissions et à gagner en
-            influence sur les réseaux sociaux.`}
-          </p>
+            <p>
+              {`Bilal Hassani, d’origine marocaine, est un jeune homme de 22 ans
+              venu petit s’installer en France avec sa mère et son frère. Il est
+              maintenant influenceur, chanteur, auteur-compositeur et youtubeur
+              sur Twitteur et Youtube avec plus d’un million d’abonnés. En 2017,
+              Bilil va faire son coming out la veille de la Gay Pride 2017. La
+              Gay Pride est une marche des fiertés LGBT (Lesbiennes, Gays,
+              Bisexuelles, Transgenre et autre. En effet, cette année, B.
+              Hassani va publier sur Twitter une chanson annonçant son
+              homosexualité. Ses plus grands fans lui resteront fidèles mais va
+              également être victime de cyber-harcèlement, d’attaques racistes,
+              homophobes voir jusqu’à des menaces de mort. Mais, déterminé, il
+              va opter un nouveau look plus “féministe” en portants des péruques
+              longues de couleur et des vêtements pour femmes. Mais en 2019,
+              Bilal Hassani être innondé de manaces et d’actes de harcèlement dû
+              à sa participation à l’Eurovision. En effet il a été élu grâce à
+              ses followers et son côté touchant pour certains mais les
+              critiques ont afflué. En guise de réponse, il déclare sur France 2
+              « C'est une fierté pour moi de représenter mon pays en étant 100 %
+              moi-même, malgré des fois des gens qui ont pu me dire sur Internet
+              ou autre que je ne représentais pas la France, avait-il déclaré au
+              lendemain de sa victoire sur France 2. Il y a beaucoup de haine,
+              il y a beaucoup de choses qui pourraient m'affaiblir et me donner
+              l'impression que je devrais arrêter ou me brider, m'auto-censurer.
+              »`}
+              <br />
+              <br />
+              {`Il portera finalement plainte pour “injures et provocation à la
+              haine et à la violence et menaces homophobes”. Aujourd’hui encore,
+              il continu d’apparaître dans les grandes émissions et à gagner en
+              influence sur les réseaux sociaux.`}
+            </p>
           </ExampleCard>
         </div>
 
@@ -968,7 +968,7 @@ function ExamplesSection() {
           margin-bottom: -20px;
         }
 
-        @media screen and (max-width: 1200px) {
+        @media screen and (max-width: 1000px) {
           .card-container {
             flex-direction: column;
           }
