@@ -1163,9 +1163,7 @@ function WhatToDoSection() {
       backgroundColor={"#FFFFFF"}
     >
       <h2>
-        Les conséquences
-        <br />
-        du cyber-harcèlement
+        Que faire ?
       </h2>
 
       <div className="container">
