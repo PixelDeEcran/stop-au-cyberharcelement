@@ -51,8 +51,8 @@ export function WaveSection({ children, id, Wave1, Wave2, marginTop, contentMarg
 
         .container {
           padding: 30px 0;
-          margin-top: -1px; /* For pixel perfect, sometimes, there is a small blank like between wave and section's container */
-          margin-bottom: -1px;
+          margin-top: -2px; /* For pixel perfect, sometimes, there is a small blank like between wave and section's container */
+          margin-bottom: -2px;
           position: relative;
           background-color: ${backgroundColor};
           z-index: ${zIndex + 1};
