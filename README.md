@@ -23,3 +23,12 @@ npm run build
 # and to start the server
 npm run start
 ```
+
+## Design Documents
+
+The original design we created can be find on [Figma](https://www.figma.com/file/GWfvIVmXtTFIy8x7PmgfBl/STOP-au-cyber-harc%C3%A8lement?node-id=0%3A1)
+
+In the folder [misc](misc/), you will also be able to find the .psd file for the
+logo and icon (you can open them with [Photopea](https://www.photopea.com/)).
+Although we designed a logo, it has never been used because it's unreadable
+but we kept it because maybe one day it will be useful.
