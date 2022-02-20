@@ -1363,16 +1363,23 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>STOP au Cyber-Harcèlement</title>
+        <title>STOP au cyber-harcèlement</title>
 
         <meta name="description" content="STOP au Cyber-Harcèlement est un site web dont l'objectif est de lutter contre le cyber-harcèlement." />
         <meta name="author" content="François SIGOIGNET et Tom GOBICHON" />
 
-        <meta property="og:title" content="STOP au Cyber-Harcèlement" />
+        <meta property="og:title" content="STOP au cyber-harcèlement" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.cyberharcelement.org/" />
+        <meta property="og:url" content="https://www.stop-au-cyberharcelement.live/" />
         <meta property="og:description" content="STOP au Cyber-Harcèlement est un site web dont l'objectif est de lutter contre le cyber-harcèlement." />
-        <meta property="og:image" content="illustration.png" />
+        <meta property="og:image" content="https://www.stop-au-cyberharcelement.live/illustration.png" />        
+        <meta property="theme-color" content="#0057FF" />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content="STOP au cyber-harcèlement" />
+        <meta property="twitter:url" content="https://www.stop-au-cyberharcelement.live/" />
+        <meta property="twitter:description" content="STOP au Cyber-Harcèlement est un site web dont l'objectif est de lutter contre le cyber-harcèlement." />
+        <meta property="twitter:image" content="https://www.stop-au-cyberharcelement.live/illustration.png" />     
 
         <link rel="icon" href="icon.png" />
         <link rel="apple-touch-icon" href="icon.png" />
