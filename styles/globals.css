@@ -113,6 +113,6 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(200% 200% at 60% 20%, transparent 10%, black 100%);
+  background: radial-gradient(160% 160% at 60% 20%, transparent 0%, black 100%);
   z-index: 1;
 }

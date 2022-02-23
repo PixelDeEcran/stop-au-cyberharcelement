@@ -1,24 +1,24 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import logoNoBG from '../public/images/Logo-Icon-NoBG.png'
-import illustrationGirl from '../public/images/illustration_girl.png'
-import { WaveDef, WaveSection } from '../components/WaveSection'
-import { Navigation, Pagination, Autoplay } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { useEffect, useState } from 'react';
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
+import logoNoBG from "../public/images/Logo-Icon-NoBG.png";
+import illustrationGirl from "../public/images/illustration_girl.png";
+import { WaveDef, WaveSection } from "../components/WaveSection";
+import { Navigation, Pagination, Autoplay } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useEffect, useState } from "react";
 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 function Header() {
   const [scrollY, setScrollY] = useState(0);
   const [navbarVisible, setNavbarVisible] = useState(false);
 
   useEffect(() => {
-    const onScroll = e => {
-      if (document.querySelector('body').style.position !== 'fixed') {
+    const onScroll = (e) => {
+      if (document.querySelector("body").style.position !== "fixed") {
         setScrollY(window.scrollY);
       }
     };
@@ -33,44 +33,41 @@ function Header() {
 
       <div className="header-container">
         <div className="header-content">
-          <a href="#"><div className={"header-logo"}>
-            <img
-              width={80}
-              height={80}
-              src={"/images/Logo-Icon-NoBG.png"}
-              alt={"Logo STOP au cyber-harcèlement"}
-              className="header-logo-img"
-            />
-            <h1>
-              <b>STOP</b> au<br />
-              cyber-harcèlement
-            </h1>
-          </div></a>
+          <a href="#">
+            <div className={"header-logo"}>
+              <img
+                width={80}
+                height={80}
+                src={"/images/Logo-Icon-NoBG.png"}
+                alt={"Logo STOP au cyber-harcèlement"}
+                className="header-logo-img"
+              />
+              <h1>
+                <b>STOP</b> au
+                <br />
+                cyber-harcèlement
+              </h1>
+            </div>
+          </a>
 
-          <button onClick={() => setNavbarVisible(!navbarVisible)} className="mobile-navbar-toggle" aria-controls="header-navbar">
-            
-          </button>
+          <button
+            onClick={() => setNavbarVisible(!navbarVisible)}
+            className="mobile-navbar-toggle"
+            aria-controls="header-navbar"
+          ></button>
 
           <nav>
-            <ul id="header-navbar" data-visible={navbarVisible ? "true" : "false"} className="header-navbar">
-              <a href="#">
-                Accueil
-              </a>
-              <a href="#numbers">
-                Chiffres
-              </a>
-              <a href="#what-is-it">
-                {"C'est quoi ?"}
-              </a>
-              <a href="#examples">
-                Exemples
-              </a>
-              <a href="#consequences">
-                Conséquences
-              </a>
-              <a href="#what-to-do">
-                Que faire ?
-              </a>
+            <ul
+              id="header-navbar"
+              data-visible={navbarVisible ? "true" : "false"}
+              className="header-navbar"
+            >
+              <a href="#">Accueil</a>
+              <a href="#numbers">Chiffres</a>
+              <a href="#what-is-it">{"C'est quoi ?"}</a>
+              <a href="#examples">Cas</a>
+              <a href="#consequences">Conséquences</a>
+              <a href="#what-to-do">Que faire ?</a>
             </ul>
           </nav>
         </div>
@@ -124,7 +121,7 @@ function Header() {
 
         .header-logo-img {
           ${scrollY > 0 &&
-            "filter: brightness(0) saturate(100%) invert(12%) sepia(8%) saturate(7480%) hue-rotate(200deg) brightness(89%) contrast(109%);"}
+          "filter: brightness(0) saturate(100%) invert(12%) sepia(8%) saturate(7480%) hue-rotate(200deg) brightness(89%) contrast(109%);"}
         }
 
         .header-logo > h1 {
@@ -152,7 +149,7 @@ function Header() {
         }
 
         .header-navbar a::after {
-          content: '';
+          content: "";
           position: absolute;
           width: 0%;
           height: 2px;
@@ -188,11 +185,11 @@ function Header() {
 
           .header-navbar a {
             font-size: 1.5em;
-            color: #0A123A;
+            color: #0a123a;
           }
 
           .header-navbar a::after {
-            background-color: #0A123A;
+            background-color: #0a123a;
             bottom: -8px;
             height: 3px;
           }
@@ -202,41 +199,47 @@ function Header() {
             border: 0;
             position: fixed;
             z-index: 9999;
-            background: url('/images/menu_black_24dp.svg');
+            background: url("/images/menu_black_24dp.svg");
             background-size: 3rem;
             background-repeat: no-repeat;
-            ${scrollY == 0 && !navbarVisible ?
-              "filter: invert(98%) sepia(12%) saturate(265%) hue-rotate(324deg) brightness(119%) contrast(100%);" : ""}
+            ${scrollY == 0 && !navbarVisible
+              ? "filter: invert(98%) sepia(12%) saturate(265%) hue-rotate(324deg) brightness(119%) contrast(100%);"
+              : ""}
             width: 3rem;
             aspect-ratio: 1;
             top: ${scrollY > 0 ? "2rem" : "2.5em"};
             right: 3rem;
           }
-          
+
           .mobile-navbar-toggle:hover {
             cursor: pointer;
           }
         }
       `}</style>
     </header>
-  )
+  );
 }
 
 function HomeSection() {
   return (
     <section id="#home" className={styles.home}>
-      <div className={styles.home_container +  " " + styles.content}>
+      <div className={styles.home_container + " " + styles.content}>
         <div className={styles.home_content}>
           <h2>Le cyber-harcèlement ne cesse de fragiliser le lien social.</h2>
           <p>
-            En 2021, <span className='underline'>20 % des jeunes</span> affirment
-            avoir déjà été confrontés à <span className='underline'>une situation de cyber-harcèlement</span>{' '}
+            En 2021, <span className="underline">20 % des jeunes</span>{" "}
+            affirment avoir déjà été confrontés à{" "}
+            <span className="underline">
+              une situation de cyber-harcèlement
+            </span>{" "}
             (suite à une étude réalisée par e-Enfance et la Caisse d’épargne)
           </p>
 
-          <a href="#numbers" className="dark-contained-button">En apprendre plus</a>
+          <a href="#numbers" className="dark-contained-button">
+            En apprendre plus
+          </a>
         </div>
-        
+
         <div className={styles.home_illustration_parent}>
           <Image
             src={illustrationGirl}
@@ -248,7 +251,7 @@ function HomeSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 // TODO: Fix the swiper, when slidesPerView is 1, it looks buggy and text is not readable.
@@ -262,18 +265,28 @@ function HomeSection() {
 // UPDATE 2: It's fix! I'm so happy! So, the bug was that it was messing with default css of swiper.
 //           So now, I edit the style of swiper's css classes from global.css.
 function NumbersSection() {
-  const Wave1 = WaveDef("#ffffff", "#0057FF", "0 0 1440 320", "M0,64L80,74.7C160,85,320,107,480,112C640,117,800,107,960,122.7C1120,139,1280,181,1360,202.7L1440,224L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z");
-  const Wave2 = WaveDef("#ffffff", "#0057FF", "0 0 1440 320", "M0,64L80,85.3C160,107,320,149,480,138.7C640,128,800,64,960,37.3C1120,11,1280,21,1360,26.7L1440,32L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z");
-  
+  const Wave1 = WaveDef(
+    "#ffffff",
+    "#0057FF",
+    "0 0 1440 320",
+    "M0,64L80,74.7C160,85,320,107,480,112C640,117,800,107,960,122.7C1120,139,1280,181,1360,202.7L1440,224L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
+  );
+  const Wave2 = WaveDef(
+    "#ffffff",
+    "#0057FF",
+    "0 0 1440 320",
+    "M0,64L80,85.3C160,107,320,149,480,138.7C640,128,800,64,960,37.3C1120,11,1280,21,1360,26.7L1440,32L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"
+  );
+
   return (
     <WaveSection
-    id = "numbers"
-    Wave1={Wave1}
-    Wave2={Wave2}
-    marginTop={20}
-    contentMarginTop={-120}
-    backgroundColor={"white"}
-    className="root"
+      id="numbers"
+      Wave1={Wave1}
+      Wave2={Wave2}
+      marginTop={20}
+      contentMarginTop={-120}
+      backgroundColor={"white"}
+      className="root"
     >
       <h2>Chiffres</h2>
 
@@ -284,7 +297,7 @@ function NumbersSection() {
           spaceBetween={20}
           autoplay={{
             delay: 10000,
-            disableOnInteraction: true
+            disableOnInteraction: true,
           }}
           breakpoints={{
             600: {
@@ -298,56 +311,67 @@ function NumbersSection() {
             },
           }}
           navigation={{
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
           }}
-          pagination={{ 
-            el: '.swiper-pagination',
+          pagination={{
+            el: ".swiper-pagination",
             clickable: true,
           }}
         >
-          { /* The figures come from https://www.solidarites.org/fr/eau-potable/ (we really liked the idea so we kinda stole it) */ }
+          {/* The figures come from https://www.solidarites.org/fr/eau-potable/ (we really liked the idea so we kinda stole it) */}
           <SwiperSlide key={"1"}>
-              <img src="https://www.solidarites.org/wp-content/uploads/2016/10/chiffre-cle-8.jpg" alt="Test" />
-              
-              <div className="swiper-slide-text color-white">
-                <h6>2,6</h6>
-                <p>
-                  <strong>millions de personnes meurent chaque année</strong>
-                  {' '}des suites de maladies liées à l&apos;eau insalubre.
-                </p>
+            <img
+              src="https://www.todaysparent.com/wp-content/uploads/2018/03/an-age-by-age-guide-for-when-your-kid-should-get-a-smartphone.jpg"
+              alt="Children on phone"
+            />
+
+            <div className="swiper-slide-text color-white">
+              <h6>10</h6>
+              <p>
+                <strong>{"C'est l'âge moyen"}</strong>
+                {" auquel un enfant obtient son premier smartphone"}
+              </p>
             </div>
           </SwiperSlide>
           <SwiperSlide key={"2"}>
-            <img src="https://www.solidarites.org/wp-content/uploads/2016/10/chiffre-cle-1.jpg" alt="Test" />
-            
+            <img
+              src="https://img.jakpost.net/c/2018/08/06/2018_08_06_50637_1533518808._large.jpg"
+              alt="Woman texting"
+            />
+
             <div className="swiper-slide-text color-white">
-              <h6>29%</h6>
+              <h6>63 %</h6>
               <p>
-                <strong>de la population mondiale</strong>
-                {' '}n&apos;ont toujours pas accès à l&apos;eau potable.
+                <strong>des enfants interrogés entre 8 et 18 ans</strong>
+                {
+                  " ont affirmé être inscrits sur un ou plusieurs réseaux sociaux."
+                }
               </p>
             </div>
           </SwiperSlide>
           <SwiperSlide key={"3"}>
-            <img src="https://www.solidarites.org/wp-content/uploads/2016/10/chiffre-cle-4.jpg" alt="Test" />
-            
+            <img
+              src="https://i0.wp.com/blog.securly.com/wp-content/uploads/2018/10/resized_1200x628-1.png?fit=1200%2C628&ssl=1"
+              alt="Woman worried looking at her phone"
+            />
+
             <div className="swiper-slide-text color-white">
-              <h6>5</h6>
+              <h6>51 %</h6>
               <p>
-                <strong>personnes</strong>
-                {' '}meurent chaque minute des suites de maladies liées à l&apos;eau insalubre.
+                <strong>des victimes du cyber-harcèlement</strong>
+                {" sont des jeunes filles en moyenne âgées de 13 ans."}
               </p>
             </div>
           </SwiperSlide>
           <SwiperSlide key={"4"}>
-            <img src="https://www.solidarites.org/wp-content/uploads/2016/10/chiffre-cle-5.jpg" alt="Test" />
-            
+            <img src="/images/worried_girl.png" alt="Worried girl" />
+
             <div className="swiper-slide-text color-white">
-              <h6>Près d&apos;1/4</h6>
+              <h6>+26 %</h6>
               <p>
-                <strong>de la population mondiale</strong>
-                {' '}est en situation de stress hydrique très grave.
+                <strong>de sollicitations liées au cyber-harcèlement</strong>
+                {" sur la plateforme Net Écoute en un an."}
               </p>
             </div>
           </SwiperSlide>
@@ -360,7 +384,9 @@ function NumbersSection() {
       </div>
 
       <div className="button-container">
-        <a href="#what-is-it" className="light-contained-button">C&apos;est quoi le <br /> cyber-harcèlement ?</a>
+        <a href="#what-is-it" className="light-contained-button">
+          C&apos;est quoi le <br /> cyber-harcèlement ?
+        </a>
       </div>
       <style jsx>{`
         .swiper-pagination {
@@ -370,12 +396,12 @@ function NumbersSection() {
         .swiper-button-prev {
           position: absolute;
           margin-top: -45px;
-          left: calc(100vw / 2 - min(75rem / 2, 85vw / 2) - 60px)
+          left: calc(100vw / 2 - min(75rem / 2, 85vw / 2) - 60px);
         }
         .swiper-button-next {
           position: absolute;
           margin-top: -45px;
-          left: calc(100vw / 2 + min(75rem / 2, 85vw / 2) + 30px)
+          left: calc(100vw / 2 + min(75rem / 2, 85vw / 2) + 30px);
         }
 
         .swiper-slide-text {
@@ -387,7 +413,7 @@ function NumbersSection() {
           text-align: left;
           z-index: 2;
         }
-        
+
         .swiper-slide-text h6 {
           font-size: 4em;
           line-height: 1em;
@@ -405,9 +431,9 @@ function NumbersSection() {
         }
 
         h2 {
-          color: #0A123A;
+          color: #0a123a;
         }
-        
+
         .button-container {
           margin-top: 60px;
           margin-bottom: -25px;
@@ -417,11 +443,16 @@ function NumbersSection() {
         }
       `}</style>
     </WaveSection>
-  )
+  );
 }
 
 function WhatIsItSection() {
-  const Wave2 = WaveDef("#0057FF", "#E5E7F2", "0 64 1440 320", "M0,64L80,85.3C160,107,320,149,480,154.7C640,160,800,128,960,122.7C1120,117,1280,139,1360,149.3L1440,160L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z");
+  const Wave2 = WaveDef(
+    "#0057FF",
+    "#E5E7F2",
+    "0 64 1440 320",
+    "M0,64L80,85.3C160,107,320,149,480,154.7C640,160,800,128,960,122.7C1120,117,1280,139,1360,149.3L1440,160L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"
+  );
 
   return (
     <WaveSection
@@ -433,80 +464,89 @@ function WhatIsItSection() {
       backgroundColor={"#0057FF"}
     >
       <h2>
-        Le cyber-harcèlement,<br />
-        — c’est quoi ?
+        Le cyber-harcèlement,
+        <br />— c’est quoi ?
       </h2>
-      
+
       <div className="container">
         <div className="card-container">
           <div className="card">
             <div className="card-head">
-              <Image 
-                src="/images/menu_book_black_24dp.svg" 
+              <Image
+                src="/images/menu_book_black_24dp.svg"
                 width={52}
                 height={48}
                 alt="Book icon"
               />
               <h3>Définition</h3>
             </div>
-            
+
             <hr />
 
             <p>
-              Le cyber-harcèlement est un acte <strong>agressif, intentionnel</strong> perpétré 
-              par un individu ou un groupe d’individus au moyen de formes 
-              de <strong>communication électroniques</strong>, <span className='underline'>de façon répétée</span> à l’encontre 
+              Le cyber-harcèlement est un acte{" "}
+              <strong>agressif, intentionnel</strong> perpétré par un individu
+              ou un groupe d’individus au moyen de formes de{" "}
+              <strong>communication électroniques</strong>,{" "}
+              <span className="underline">de façon répétée</span> à l’encontre
               d’une victime qui ne peut facilement se défendre seule. <br />
               <br />
-              Il peut prendre <span className='underline'>différentes</span> formes :
+              Il peut prendre <span className="underline">
+                différentes
+              </span>{" "}
+              formes :
               <ul>
                 <li>intimidations, insultes, moqueries, menaces</li>
                 <li>propagation de rumeurs</li>
                 <li>piratage et usurpation d’identité digitale</li>
-                <li>publication de photos/vidéos d’une personne en mauvaise posture</li>
+                <li>
+                  publication de photos/vidéos d’une personne en mauvaise
+                  posture
+                </li>
                 <li>sexting</li>
               </ul>
             </p>
           </div>
           <div className="card">
             <div className="card-head">
-              { /* I don't know why but nextjs' image behave in a weird way */ }
-              { /* eslint-disable-next-line @next/next/no-img-element */ }
-              <img 
-                src="/images/law_icon.svg" 
+              {/* I don't know why but nextjs' image behave in a weird way */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/law_icon.svg"
                 width="54px"
                 height="54px"
                 alt="Law icon"
               />
               <h3>Ce que dit la loi</h3>
             </div>
-            
+
             <hr />
 
             <p>
-              Le gouvernement français est très fortement opposé 
-              aux cybercrimes et puni sévèrement les auteurs :
+              Le gouvernement français est très fortement opposé aux cybercrimes
+              et puni sévèrement les auteurs :
             </p>
 
-            { /* eslint-disable-next-line @next/next/no-img-element */ }
-            <img 
-              src="/images/law_sentences.png" 
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/law_sentences.png"
               width="100%"
               height="auto"
               style={{
-                maxWidth: "22.5em"
+                maxWidth: "22.5em",
               }}
               alt="Law sentences"
             />
 
             <p>
-              * Les parents des auteurs mineurs sont  
-                responsables civilement
+              * Les parents des auteurs mineurs sont responsables civilement
             </p>
           </div>
         </div>
-        
-        <a href="#examples" className="dark-contained-button">Voir des exemples de <br /> cyber-harcèlement</a>
+
+        <a href="#examples" className="dark-contained-button">
+          Voir des cas de <br /> cyber-harcèlement
+        </a>
       </div>
 
       <style jsx>{`
@@ -520,7 +560,7 @@ function WhatIsItSection() {
         .card-container {
           display: flex;
           gap: 3em;
-          color: #0A123A;
+          color: #0a123a;
         }
 
         .card {
@@ -543,7 +583,7 @@ function WhatIsItSection() {
         }
 
         .card hr {
-          border-top: 3px solid #0A123A;
+          border-top: 3px solid #0a123a;
         }
 
         @media screen and (max-width: 1000px) {
@@ -557,7 +597,7 @@ function WhatIsItSection() {
         }
       `}</style>
     </WaveSection>
-  )
+  );
 }
 
 function ExampleCard({ children, id, profileUrl, name, text }) {
@@ -565,75 +605,69 @@ function ExampleCard({ children, id, profileUrl, name, text }) {
 
   useEffect(() => {
     const body = document.querySelector("body");
-    const html = document.querySelector('html');
+    const html = document.querySelector("html");
 
     if (showModal) {
       const scrollY = window.scrollY;
 
-      body.style.position = 'fixed';
+      body.style.position = "fixed";
       body.style.top = `-${scrollY}px`;
       body.style.left = `0`;
-      body.style.width = "100%"
-      body.style.overflowX = 'hidden';
-      body.style.overflowY = 'scroll';
+      body.style.width = "100%";
+      body.style.overflowX = "hidden";
+      body.style.overflowY = "scroll";
     } else {
       const scrollY = body.style.top;
-      body.style.position = '';
-      body.style.top = '';
-      body.style.left = '';
-      body.style.overflowX = '';
-      body.style.overflowY = '';
-      html.style.scrollBehavior = 'auto';
+      body.style.position = "";
+      body.style.top = "";
+      body.style.left = "";
+      body.style.overflowX = "";
+      body.style.overflowY = "";
+      html.style.scrollBehavior = "auto";
 
       window.scrollTo({
-        left: 0, 
-        top: parseInt(scrollY || '0') * -1,
-        behavior: 'auto' // this option is not working for unknown reason
+        left: 0,
+        top: parseInt(scrollY || "0") * -1,
+        behavior: "auto", // this option is not working for unknown reason
       });
 
-      html.style.scrollBehavior = '';
+      html.style.scrollBehavior = "";
     }
-  })
+  });
 
   return (
     <>
       <div className="card">
         <div className="card-head">
-          <img 
-            src={profileUrl} 
-            alt="Book icon"
-          />
+          <img src={profileUrl} alt="Book icon" />
           <div className="card-head-right">
             <h3>{name}</h3>
             <hr />
           </div>
         </div>
 
-        <p>
-          {text}
-        </p>
+        <p>{text}</p>
 
-        <button onClick={() => setShowModal(true)} className="read-more">Lire la suite</button>
+        <button onClick={() => setShowModal(true)} className="read-more">
+          Lire la suite
+        </button>
       </div>
 
       <div id={id} className="modal">
         <div className="modal-card">
           <div className="modal-head">
-            <img 
-              src={profileUrl} 
-              alt="Book icon"
-              />
+            <img src={profileUrl} alt="Book icon" />
             <div className="modal-head-right">
               <h3>{name}</h3>
               <hr />
             </div>
           </div>
 
-          <div className="modal-content">
-            {children}
-          </div>
+          <div className="modal-content">{children}</div>
 
-          <button onClick={() => setShowModal(false)} className="modal-close">&times;</button>
+          <button onClick={() => setShowModal(false)} className="modal-close">
+            &times;
+          </button>
         </div>
       </div>
 
@@ -666,7 +700,7 @@ function ExampleCard({ children, id, profileUrl, name, text }) {
         }
 
         .card-head-right > hr {
-          border-top: 3px solid #0A123A;
+          border-top: 3px solid #0a123a;
           margin-top: -22px;
         }
 
@@ -687,9 +721,10 @@ function ExampleCard({ children, id, profileUrl, name, text }) {
           height: 100%;
           width: 100%;
           content: "";
-          background: linear-gradient(to top,
-            rgba(255,255,255, 1) 1%, 
-            rgba(255,255,255, 0) 40%
+          background: linear-gradient(
+            to top,
+            rgba(255, 255, 255, 1) 1%,
+            rgba(255, 255, 255, 0) 40%
           );
           pointer-events: none;
         }
@@ -705,7 +740,7 @@ function ExampleCard({ children, id, profileUrl, name, text }) {
         }
 
         .read-more::before {
-          content: '→ '
+          content: "→ ";
         }
 
         .read-more {
@@ -714,7 +749,7 @@ function ExampleCard({ children, id, profileUrl, name, text }) {
           font-family: Roboto, sans-serif;
           font-size: 1em;
           font-weight: 500;
-          color: #0057FF;
+          color: #0057ff;
           border: 0;
           border-radius: 0.6rem;
         }
@@ -722,16 +757,16 @@ function ExampleCard({ children, id, profileUrl, name, text }) {
         .read-more:hover {
           cursor: pointer;
         }
-        
+
         .read-more::after {
-          content: '';
+          content: "";
           position: absolute;
           width: 0%;
           height: 2px;
           bottom: -2px;
           left: 1.5em;
           right: 0;
-          background-color: #0057FF;
+          background-color: #0057ff;
           transition: width 0.3s;
         }
 
@@ -767,7 +802,7 @@ function ExampleCard({ children, id, profileUrl, name, text }) {
           margin-top: 100px;
           margin-bottom: 0;
           overflow: auto;
-          color: #0A123A;
+          color: #0a123a;
         }
 
         .modal-close {
@@ -775,7 +810,7 @@ function ExampleCard({ children, id, profileUrl, name, text }) {
           top: 0.75em;
           right: 1em;
           font-size: 2em;
-          color: #0A123A;
+          color: #0a123a;
           background: transparent;
           border: 0;
         }
@@ -809,7 +844,7 @@ function ExampleCard({ children, id, profileUrl, name, text }) {
         }
 
         .modal-head-right > hr {
-          border-top: 3px solid #0A123A;
+          border-top: 3px solid #0a123a;
           margin-top: -22px;
         }
 
@@ -828,7 +863,7 @@ function ExampleCard({ children, id, profileUrl, name, text }) {
           height: 40vh;
           max-height: 40rem;
         }
-        
+
         @media screen and (max-width: 1200px) {
           .card {
             width: auto;
@@ -836,7 +871,7 @@ function ExampleCard({ children, id, profileUrl, name, text }) {
         }
       `}</style>
     </>
-  )
+  );
 }
 
 function ExamplesSection() {
@@ -849,7 +884,7 @@ function ExamplesSection() {
       zIndex={100} // So modal are in top of the others sections
     >
       <div className="container">
-        <h2>Exemples de cyber-harcèlement</h2>
+        <h2>Cas de cyber-harcèlement</h2>
 
         <div className="card-container">
           <ExampleCard
@@ -898,54 +933,35 @@ function ExamplesSection() {
             </p>
           </ExampleCard>
           <ExampleCard
-            profileUrl={"/images/bilal_hassani.png"}
-            name={"Bilal Hassani"}
+            profileUrl={"/images/aliya.png"}
+            name={"Aliya"}
             text={`
-              Bilal Hassani, d’origine marocaine, est un jeune homme de 22 ans venu petit s’installer en France avec sa mère et son frère.
-              Il est maintenant influenceur, chanteur, auteur-compositeur et youtubeur sur Twitteur et Youtube avec plus d’un million d’abonnés. 
-              En 2017, Bilil va faire son coming out la veille de la Gay Pride 2017. La Gay Pride est une marche des fiertés LGBT 
-              (Lesbiennes, Gays, Bisexuelles, Transgenre et autre. En effet, cette année, B. Hassani va publier sur Twitter une
-              chanson annonçant son homosexualité. Ses plus grands fans lui resteront fidèles mais va également être victime de 
-              cyber-harcèlement, d’attaques 
+            Aliya, 21 ans, est une jeune femme ayant été victime de cyberharcèlement lors de ses 14 ans.
+             Après cinq ans à en être malade pour le cachant par honte, Aliya trouve enfin le courage de 
+             nous partager sa mauvaise expérience pour avertir les jeunes. Elle a également écrit un 
+             livre “Juste une histoire de nudes” où elle nous explique comment elle a réussi à 
+             ressortir de cette spirale. A 14 ans, notre collégienne était fan de jeux vidéo. 
+             Un jour, elle a rencontré un garçon nommé Alexandre sur un jeu en ligne et a commencé
+              a dialogué avec lui. Elle qui se trouvait moche, a été réconfortée par les douces 
+              paroles de ce garçon qui la trouvait attirante. Charmée, Aliya décide de s’engager 
             `}
           >
             <p>
-              {`Bilal Hassani, d’origine marocaine, est un jeune homme de 22 ans
-              venu petit s’installer en France avec sa mère et son frère. Il est
-              maintenant influenceur, chanteur, auteur-compositeur et youtubeur
-              sur Twitteur et Youtube avec plus d’un million d’abonnés. En 2017,
-              Bilil va faire son coming out la veille de la Gay Pride 2017. La
-              Gay Pride est une marche des fiertés LGBT (Lesbiennes, Gays,
-              Bisexuelles, Transgenre et autre. En effet, cette année, B.
-              Hassani va publier sur Twitter une chanson annonçant son
-              homosexualité. Ses plus grands fans lui resteront fidèles mais va
-              également être victime de cyber-harcèlement, d’attaques racistes,
-              homophobes voir jusqu’à des menaces de mort. Mais, déterminé, il
-              va opter un nouveau look plus “féministe” en portants des péruques
-              longues de couleur et des vêtements pour femmes. Mais en 2019,
-              Bilal Hassani être innondé de manaces et d’actes de harcèlement dû
-              à sa participation à l’Eurovision. En effet il a été élu grâce à
-              ses followers et son côté touchant pour certains mais les
-              critiques ont afflué. En guise de réponse, il déclare sur France 2
-              « C'est une fierté pour moi de représenter mon pays en étant 100 %
-              moi-même, malgré des fois des gens qui ont pu me dire sur Internet
-              ou autre que je ne représentais pas la France, avait-il déclaré au
-              lendemain de sa victoire sur France 2. Il y a beaucoup de haine,
-              il y a beaucoup de choses qui pourraient m'affaiblir et me donner
-              l'impression que je devrais arrêter ou me brider, m'auto-censurer.
-              »`}
-              <br />
-              <br />
-              {`Il portera finalement plainte pour “injures et provocation à la
-              haine et à la violence et menaces homophobes”. Aujourd’hui encore,
-              il continu d’apparaître dans les grandes émissions et à gagner en
-              influence sur les réseaux sociaux.`}
+              {`Aliya, 21 ans, est une jeune femme ayant été victime de cyberharcèlement lors de ses 14 ans. Après cinq ans à en être malade pour le cachant par honte, Aliya trouve enfin le courage de nous partager sa mauvaise expérience pour avertir les jeunes. Elle a également écrit un livre “Juste une histoire de nudes” où elle nous explique comment elle a réussi à ressortir de cette spirale. `}
+              <br /> <br />
+              {`A 14 ans, notre collégienne était fan de jeux vidéo. Un jour, elle a rencontré un garçon nommé Alexandre sur un jeu en ligne et a commencé a dialogué avec lui. Elle qui se trouvait moche, a été réconfortée par les douces paroles de ce garçon qui la trouvait attirante. Charmée, Aliya décide de s’engager dans une relation virtuelle avec lui. Une histoire parfaite. Mais un jour, ce jeune homme lui demande une « preuve de son amour » au bout d’un mois de relation. Mais le plus surprenant, c’est qu’Alexandre lui donne un délai de 3 jours pour répondre et s’il n’a pas de réponse, il choisira l’objet de la preuve lui-même. Confuse, elle n’y répondit pas ; Trois jours passés, le petit ami lui dit “ Je veux bien une photo de tes seins ”. C’est à ce moment que la manipulation a commencé. Elle lui répondit “ tu ne peux pas me demander ça, on ne s’est pas vus en vrai, tu vas trop vite ”. Il la rassura en lui disant qu’elle était “ bloquée ” et qu’elle deviendrait une femme. Convaincue, elle mit donc la photo sur Snapchat en se disant qu’elle s’autodétruirait. `}
+              <br /> <br />
+              {`Puis il a commencé à demander des vidéos où elle devait “ se masturber” dont elle en ignorait la signification. De crainte de le perdre, elle finit par céder. Les demandes deviennent quotidiennes. Aliya commence à être perdue et à pleurer à longueur de journée. Elle se dit que c’est de sa faute, qu’il ne fallait pas envoyer la première photo et ne peut en parler à ses parents. Lorsqu’elle retourna à l’école, elle finit par se scarifier et s’évanouir.  `}
+              <br /> <br />
+              {`Sa mère porte plainte mais cet évènement a laissé suite à du harcèlement de la part de ses amies et ses copains lui furent de nombreuses avances. `}
+              <br /> <br />
+              {`Aujourd’hui, Aliya milite contre le harcèlement et se rend dans des écoles avec une sexologue afin de prévenir les adolescents.  `}
             </p>
           </ExampleCard>
         </div>
 
         <a href="#consequences" className="dark-outlined-button">
-          Découvrir les conséquences <br />
+          Les conséquences <br />
           du cyber-harcèlement
         </a>
       </div>
@@ -961,6 +977,10 @@ function ExamplesSection() {
         .card-container {
           display: flex;
           gap: 3em;
+        }
+
+        .card-container > * {
+          width: 100%;
         }
 
         .container > a {
@@ -979,7 +999,12 @@ function ExamplesSection() {
 }
 
 function ConsequencesSection() {
-  const Wave1 = WaveDef("#0057FF", "#E5E7F2", "0 0 1440 320", "M0,160L120,138.7C240,117,480,75,720,96C960,117,1200,203,1320,245.3L1440,288L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z");
+  const Wave1 = WaveDef(
+    "#0057FF",
+    "#E5E7F2",
+    "0 0 1440 320",
+    "M0,160L120,138.7C240,117,480,75,720,96C960,117,1200,203,1320,245.3L1440,288L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"
+  );
 
   return (
     <WaveSection
@@ -991,87 +1016,93 @@ function ConsequencesSection() {
       backgroundColor={"#0057FF"}
     >
       <h2>
-        Les conséquences<br />
+        Les conséquences
+        <br />
         du cyber-harcèlement
       </h2>
-      
+
       <div className="container">
         <div className="short-consequences-container">
           <div className="card">
             <div className="card-head">
-              <Image 
-                src="/images/psychology_black_24dp.svg" 
+              <Image
+                src="/images/psychology_black_24dp.svg"
                 width={52}
                 height={48}
                 alt="Psychology icon"
               />
               <h3>Conséquences psychiques</h3>
             </div>
-            
+
             <hr />
 
             <p>
-              Sentiments de culpabilité, d’impuissance, de dévalorisation de sa personne, anxiété, honte, perte d’estime de soi, phobie, dépression...
+              Sentiments de culpabilité, d’impuissance, de dévalorisation de sa
+              personne, anxiété, honte, perte d’estime de soi, phobie,
+              dépression...
             </p>
           </div>
           <div className="card">
             <div className="card-head">
-              { /* I don't know why but nextjs' image behave in a weird way */ }
-              { /* eslint-disable-next-line @next/next/no-img-element */ }
-              <img 
-                src="/images/boy_black_24dp.svg" 
+              {/* I don't know why but nextjs' image behave in a weird way */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/boy_black_24dp.svg"
                 width="54px"
                 height="54px"
                 alt="Boy icon"
               />
               <h3>Conséquences physiques</h3>
             </div>
-            
+
             <hr />
 
             <p>
-              Absence de sommeil, nervosité ou manque d’énergie, 
-              vertige, fatigue intense, migraines, perte de mémoire, 
-              troubles alimentaires, mutilations corporelles…<br />
+              Absence de sommeil, nervosité ou manque d’énergie, vertige,
+              fatigue intense, migraines, perte de mémoire, troubles
+              alimentaires, mutilations corporelles…
               <br />
-              Les troubles physiques sont parfois plus visibles que les psychiques, 
-              mais révèlent souvent l’existence d’un mal-être psychologique. 
+              <br />
+              Les troubles physiques sont parfois plus visibles que les
+              psychiques, mais révèlent souvent l’existence d’un mal-être
+              psychologique.
             </p>
           </div>
         </div>
-        
+
         <div className="long-term-consequences">
           <div className="card">
             <div className="card-head">
-              { /* I don't know why but nextjs' image behave in a weird way */ }
-              { /* eslint-disable-next-line @next/next/no-img-element */ }
-              <img 
-                src="/images/groups_black_24dp.svg" 
+              {/* I don't know why but nextjs' image behave in a weird way */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/groups_black_24dp.svg"
                 width="48px"
                 height="48px"
                 alt="Boy icon"
               />
               <h3>Conséquences à long terme</h3>
             </div>
-            
+
             <hr />
 
             <p>
-              Le cyberharcèlement peut fragiliser le lien social. 
-              En effet, l’anonymat que procure le cyberharcèlement 
-              peut avoir un incident sur la confiance de la victime.
-              Elle peut ne plus savoir vers qui se dirigé et lui 
-              causé des problèmes lors d’échanges avec des personnes 
-              qui lui sont inconnues.<br />
-              <br /> 
-              Il peut s’ensuivre des maladies psychologiques comme 
-              par exemple une phobie scolaire où la victime se renferme 
-              sur elle-même et est dans l’incapacité de retourné à l’école. 
+              Le cyberharcèlement peut fragiliser le lien social. En effet,
+              l’anonymat que procure le cyberharcèlement peut avoir un incident
+              sur la confiance de la victime. Elle peut ne plus savoir vers qui
+              se dirigé et lui causé des problèmes lors d’échanges avec des
+              personnes qui lui sont inconnues.
+              <br />
+              <br />
+              Il peut s’ensuivre des maladies psychologiques comme par exemple
+              une phobie scolaire où la victime se renferme sur elle-même et est
+              dans l’incapacité de retourné à l’école.
             </p>
           </div>
 
           <a href="#what-to-do" className="dark-contained-button">
-            Que faire contre<br />
+            Que faire contre
+            <br />
             le cyber-harcèlement ?
           </a>
         </div>
@@ -1090,7 +1121,7 @@ function ConsequencesSection() {
           flex-direction: column;
           align-items: center;
           gap: 3em;
-          color: #0A123A;
+          color: #0a123a;
         }
 
         .short-consequences-container > .card {
@@ -1103,7 +1134,7 @@ function ConsequencesSection() {
           flex-direction: column;
           align-items: center;
           gap: 3em;
-          color: #0A123A;
+          color: #0a123a;
         }
 
         .container > * {
@@ -1131,7 +1162,7 @@ function ConsequencesSection() {
         }
 
         .card hr {
-          border-top: 3px solid #0A123A;
+          border-top: 3px solid #0a123a;
         }
 
         @media screen and (max-width: 900px) {
@@ -1142,7 +1173,7 @@ function ConsequencesSection() {
           .card {
             width: 75vw;
           }
-          
+
           .short-consequences-container > .card {
             width: 75vw;
             max-width: 75vw;
@@ -1150,11 +1181,16 @@ function ConsequencesSection() {
         }
       `}</style>
     </WaveSection>
-  )
+  );
 }
 
 function WhatToDoSection() {
-  const Wave1 = WaveDef("#FFFFFF", "#0057FF", "0 0 1440 320", "M0,64L120,85.3C240,107,480,149,720,149.3C960,149,1200,107,1320,85.3L1440,64L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z");
+  const Wave1 = WaveDef(
+    "#FFFFFF",
+    "#0057FF",
+    "0 0 1440 320",
+    "M0,64L120,85.3C240,107,480,149,720,149.3C960,149,1200,107,1320,85.3L1440,64L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"
+  );
 
   return (
     <WaveSection
@@ -1165,31 +1201,42 @@ function WhatToDoSection() {
       contentMarginTop={-120}
       backgroundColor={"#FFFFFF"}
     >
-      <h2>
-        Que faire ?
-      </h2>
+      <h2>Que faire ?</h2>
 
       <div className="container">
         <div className="section">
           <h3>Si vous êtes victime</h3>
-          
+
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mi
-            nunc, lacinia efficitur dolor vel, interdum mollis sapien. Sed
-            maximus leo ipsum, a gravida risus malesuada sit amet. Sed sed
-            ullamcorper tellus. Phasellus lobortis libero ut sem dapibus, vitae
-            faucibus magna fringilla. Vestibulum quam purus, elementum non nulla
-            vel, convallis mollis quam. Sed sed sodales justo. Praesent semper
-            maximus justo et hendrerit. In id arcu quis erat gravida imperdiet
-            quis eu neque. Fusce arcu lectus, congue quis rutrum eu, maximus
-            porta lorem. Pellentesque commodo dui purus, id feugiat turpis
-            accumsan at. <br /> 
+            {`Tout d'abord, vous pouvez demander le retrait des publications soit à l'auteur,
+            ou au responsable du support électronique. Vous pouvez aussi faire un `}
+            <a href="https://www.service-public.fr/particuliers/vosdroits/R17674">{`signalement en ligne`}</a>
+            {` à la police ou à la gendarmerie ou porter plainte.`}
             <br />
-            Quisque vitae lacus ullamcorper, molestie massa eget,
-            vulputate ex. Curabitur porta mattis ultrices. Interdum et malesuada
-            fames ac ante ipsum primis in faucibus. Duis porttitor dui ut lectus
-            hendrerit aliquam. Cras nec mattis dui, in pellentesque leo. Sed
-            quis velit luctus, tincidunt dui sit amet, congue nisi.
+            <br />
+            {`
+            N'hésitez pas à tout enregistrer et à prendre des captures d'écrans.
+            Ces enregistrements peuvent servir de preuves en cas de procédure judiciaire.
+            `}
+            <br />
+            <br />
+            {`
+            Mais surout parlez-en à votre entourage, que ce soit vos parents, 
+            ou mêmes à vos amis. Le plus important est de prévenir de votre situation 
+            à des personnes en qui vous avez confiance. 
+            Notez aussi que des services existent pour vous accompagner et vous écouter :
+            `}
+            <ul>
+              <li>
+                3018 sur <a href="www.e-enfance.org/le-3018">e-enfance.org</a>
+              </li>
+              <li>
+                3020 sur{" "}
+                <a href="www.nonauharcelement.education.gouv.fr">
+                  education.gouv.fr
+                </a>
+              </li>
+            </ul>
           </p>
         </div>
 
@@ -1199,22 +1246,35 @@ function WhatToDoSection() {
           <h3>Si vous êtes témoin</h3>
 
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mi
-            nunc, lacinia efficitur dolor vel, interdum mollis sapien. Sed
-            maximus leo ipsum, a gravida risus malesuada sit amet. Sed sed
-            ullamcorper tellus. Phasellus lobortis libero ut sem dapibus, vitae
-            faucibus magna fringilla. Vestibulum quam purus, elementum non nulla
-            vel, convallis mollis quam. Sed sed sodales justo. Praesent semper
-            maximus justo et hendrerit. In id arcu quis erat gravida imperdiet
-            quis eu neque. Fusce arcu lectus, congue quis rutrum eu, maximus
-            porta lorem. Pellentesque commodo dui purus, id feugiat turpis
-            accumsan at.<br /> 
+            {`Si vous remarquez un changement de comportement d'un de vos proches, 
+            ou des messages suspects sur ses réseaux sociaux, n'hésitez pas à lui en parler.`}
             <br />
-            Quisque vitae lacus ullamcorper, molestie massa eget,
-            vulputate ex. Curabitur porta mattis ultrices. Interdum et malesuada
-            fames ac ante ipsum primis in faucibus. Duis porttitor dui ut lectus
-            hendrerit aliquam. Cras nec mattis dui, in pellentesque leo. Sed
-            quis velit luctus, tincidunt dui sit amet, congue nisi.
+            <br />
+            {`S'il refuse de vous en parler, prévenez un de ses proches ou inciter-le à parler
+            à un autre adulte de confiance (que ça soit dans sa sphère privée, un membre de sa famille
+            ou de son cercle amical).`}
+            <br />
+            <br />
+            {`Si le harcèlement a lieu entre élèves d'un même établissement scolaire, 
+            contactez le chef d'établissement ou le référent harcèlement.`}
+            <br />
+            <br />
+            {`Dans tout les cas, n'utilisez pas la violence si vous constatez un cas de cyber-harcèlement,
+            cela pourrait aggraver la situation.`}
+            <br />
+            <br />
+            {`Des services existent pour vous accompagner dans vos démarches :`}
+            <ul>
+              <li>
+                3018 sur <a href="www.e-enfance.org/le-3018">e-enfance.org</a>
+              </li>
+              <li>
+                3020 sur{" "}
+                <a href="www.nonauharcelement.education.gouv.fr">
+                  education.gouv.fr
+                </a>
+              </li>
+            </ul>
           </p>
         </div>
       </div>
@@ -1255,6 +1315,14 @@ function WhatToDoSection() {
           width: 4px;
         }
 
+        a {
+          color: #0057ff;
+        }
+
+        a:hover {
+          text-decoration: underline;
+        }
+
         @media screen and (max-width: 900px) {
           .divider {
             width: 100%;
@@ -1270,9 +1338,13 @@ function WhatToDoSection() {
   );
 }
 
-
 function Footer() {
-  const Wave1 = WaveDef("#0A123A", "#FFFFFF", "0 0 1440 320", "M0,160L120,186.7C240,213,480,267,720,261.3C960,256,1200,192,1320,160L1440,128L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z");
+  const Wave1 = WaveDef(
+    "#0A123A",
+    "#FFFFFF",
+    "0 0 1440 320",
+    "M0,160L120,186.7C240,213,480,267,720,261.3C960,256,1200,192,1320,160L1440,128L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"
+  );
 
   return (
     <WaveSection
@@ -1282,8 +1354,6 @@ function Footer() {
       backgroundColor={"#0A123A"}
       type="footer"
     >
-      
-      
       <div className="container">
         <div className={styles.header_logo}>
           <Image
@@ -1293,36 +1363,35 @@ function Footer() {
             alt={"Logo STOP au cyber-harcèlement"}
           />
           <h1>
-            <b>STOP</b> au<br />
+            <b>STOP</b> au
+            <br />
             cyber-harcèlement
           </h1>
         </div>
 
         <div className="footer-right">
           <nav className={styles.header_navbar}>
-            <a href="#">
-              Accueil
-            </a>
-            <a href="#numbers">
-              Chiffres
-            </a>
-            <a href="#what-is-it">
-              {"C'est quoi ?"}
-            </a>
-            <a href="#examples">
-              Exemples
-            </a>
-            <a href="#consequences">
-              Conséquences
-            </a>
-            <a href="#what-to-do">
-              Que faire ?
-            </a>
+            <a href="#">Accueil</a>
+            <a href="#numbers">Chiffres</a>
+            <a href="#what-is-it">{"C'est quoi ?"}</a>
+            <a href="#examples">Cas</a>
+            <a href="#consequences">Conséquences</a>
+            <a href="#what-to-do">Que faire ?</a>
           </nav>
 
           <p>
-            Ce site web a été réalisé par François SIGOIGNET et Tom GOBICHON dans le cadre des cours d’EMC. 
-            Le code source du site web est disponible <a className="link" href="https://github.com/PixelDeEcran/stop-au-cyberharcelement" target={"_blank"} rel="noreferrer">ici</a>.
+            Ce site web a été réalisé par François SIGOIGNET et Tom GOBICHON
+            dans le cadre des cours d’EMC. Le code source du site web est
+            disponible{" "}
+            <a
+              className="link"
+              href="https://github.com/PixelDeEcran/stop-au-cyberharcelement"
+              target={"_blank"}
+              rel="noreferrer"
+            >
+              ici
+            </a>
+            .
           </p>
         </div>
       </div>
@@ -1344,7 +1413,7 @@ function Footer() {
         }
 
         .link {
-          color: #2D74FF;
+          color: #2d74ff;
         }
 
         .link:hover {
@@ -1356,7 +1425,7 @@ function Footer() {
         }
       `}</style>
     </WaveSection>
-  )
+  );
 }
 
 export default function Home() {
@@ -1365,32 +1434,58 @@ export default function Home() {
       <Head>
         <title>STOP au cyber-harcèlement</title>
 
-        <meta name="description" content="STOP au Cyber-Harcèlement est un site web dont l'objectif est de lutter contre le cyber-harcèlement." />
+        <meta
+          name="description"
+          content="STOP au Cyber-Harcèlement est un site web dont l'objectif est de lutter contre le cyber-harcèlement."
+        />
         <meta name="author" content="François SIGOIGNET et Tom GOBICHON" />
 
         <meta property="og:title" content="STOP au cyber-harcèlement" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.stop-au-cyberharcelement.live/" />
-        <meta property="og:description" content="STOP au Cyber-Harcèlement est un site web dont l'objectif est de lutter contre le cyber-harcèlement." />
-        <meta property="og:image" content="https://www.stop-au-cyberharcelement.live/illustration.png" />        
+        <meta
+          property="og:url"
+          content="https://www.stop-au-cyberharcelement.live/"
+        />
+        <meta
+          property="og:description"
+          content="STOP au Cyber-Harcèlement est un site web dont l'objectif est de lutter contre le cyber-harcèlement."
+        />
+        <meta
+          property="og:image"
+          content="https://www.stop-au-cyberharcelement.live/illustration.png"
+        />
         <meta property="theme-color" content="#0057FF" />
 
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content="STOP au cyber-harcèlement" />
-        <meta property="twitter:url" content="https://www.stop-au-cyberharcelement.live/" />
-        <meta property="twitter:description" content="STOP au Cyber-Harcèlement est un site web dont l'objectif est de lutter contre le cyber-harcèlement." />
-        <meta property="twitter:image" content="https://www.stop-au-cyberharcelement.live/illustration.png" />     
+        <meta
+          property="twitter:url"
+          content="https://www.stop-au-cyberharcelement.live/"
+        />
+        <meta
+          property="twitter:description"
+          content="STOP au Cyber-Harcèlement est un site web dont l'objectif est de lutter contre le cyber-harcèlement."
+        />
+        <meta
+          property="twitter:image"
+          content="https://www.stop-au-cyberharcelement.live/illustration.png"
+        />
 
         <link rel="icon" href="icon.png" />
         <link rel="apple-touch-icon" href="icon.png" />
 
-        <meta name="google-site-verification" content="UUPyV-w4tlL-9Ls3qcPTnWlabcdk-aEbSR3-iO6tOXU" />
-        
+        <meta
+          name="google-site-verification"
+          content="UUPyV-w4tlL-9Ls3qcPTnWlabcdk-aEbSR3-iO6tOXU"
+        />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
-        { /* eslint-disable-next-line @next/next/no-page-custom-font */ }
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
-
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+          rel="stylesheet"
+        />
       </Head>
 
       <main>
@@ -1406,7 +1501,7 @@ export default function Home() {
         <Footer />
       </main>
     </>
-  )
+  );
 }
 
 /*
