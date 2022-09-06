@@ -487,7 +487,7 @@ function WhatIsItSection() {
               Le cyber-harcèlement est un acte{" "}
               <strong>agressif, intentionnel</strong> perpétré par un individu
               ou un groupe d’individus au moyen de formes de{" "}
-              <strong>communication électroniques</strong>,{" "}
+              <strong>communication électronique</strong>,{" "}
               <span className="underline">de façon répétée</span> à l’encontre
               d’une victime qui ne peut facilement se défendre seule. <br />
               <br />
@@ -496,7 +496,7 @@ function WhatIsItSection() {
               </span>{" "}
               formes :
               <ul>
-                <li>intimidations, insultes, moqueries, menaces</li>
+                <li>intimidation, insultes, moqueries, menaces</li>
                 <li>propagation de rumeurs</li>
                 <li>piratage et usurpation d’identité digitale</li>
                 <li>
@@ -524,7 +524,7 @@ function WhatIsItSection() {
 
             <p>
               Le gouvernement français est très fortement opposé aux cybercrimes
-              et puni sévèrement les auteurs :
+              et punit sévèrement les auteurs.
             </p>
 
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -892,9 +892,9 @@ function ExamplesSection() {
             name={"Bilal Hassani"}
             text={`
               Bilal Hassani, d’origine marocaine, est un jeune homme de 22 ans venu petit s’installer en France avec sa mère et son frère.
-              Il est maintenant influenceur, chanteur, auteur-compositeur et youtubeur sur Twitteur et Youtube avec plus d’un million d’abonnés. 
-              En 2017, Bilil va faire son coming out la veille de la Gay Pride 2017. La Gay Pride est une marche des fiertés LGBT 
-              (Lesbiennes, Gays, Bisexuelles, Transgenre et autre. En effet, cette année, B. Hassani va publier sur Twitter une
+              Il est maintenant influenceur, chanteur, auteur-compositeur et youtubeur sur Twitter et YouTube avec plus d’un million d’abonnés. 
+              En 2017, Bilal fait son coming-out la veille de la Gay Pride 2017. La Gay Pride est une marche des fiertés LGBT 
+              (Lesbiennes, Gays, Bisexuelles, Transgenres et autres). En effet, cette année-là, B. Hassani publie sur Twitter une
               chanson annonçant son homosexualité. Ses plus grands fans lui resteront fidèles mais va également être victime de 
               cyber-harcèlement, d’attaques 
             `}
@@ -903,24 +903,23 @@ function ExamplesSection() {
               {`Bilal Hassani, d’origine marocaine, est un jeune homme de 22 ans
               venu petit s’installer en France avec sa mère et son frère. Il est
               maintenant influenceur, chanteur, auteur-compositeur et youtubeur
-              sur Twitteur et Youtube avec plus d’un million d’abonnés. En 2017,
-              Bilil va faire son coming out la veille de la Gay Pride 2017. La
+              sur Twitter et YouTube avec plus d’un million d’abonnés. En 2017,
+              Bilal fait son coming-out la veille de la Gay Pride 2017. La
               Gay Pride est une marche des fiertés LGBT (Lesbiennes, Gays,
-              Bisexuelles, Transgenre et autre. En effet, cette année, B.
-              Hassani va publier sur Twitter une chanson annonçant son
-              homosexualité. Ses plus grands fans lui resteront fidèles mais va
+              Bisexuelles, Transgenres et autres). En effet, cette année-là, B.
+              Hassani publie sur Twitter une chanson annonçant son
+              homosexualité. Ses plus grands fans lui resteront fidèles mais il va
               également être victime de cyber-harcèlement, d’attaques racistes,
-              homophobes voir jusqu’à des menaces de mort. Mais, déterminé, il
-              va opter un nouveau look plus “féministe” en portants des péruques
+              homophobes voire jusqu’à des menaces de mort. Mais, déterminé, il
+              opte pour un nouveau look plus “féministe” en portant des perruques
               longues de couleur et des vêtements pour femmes. Mais en 2019,
-              Bilal Hassani être innondé de manaces et d’actes de harcèlement dû
+              Bilal Hassani est innondé de menaces et d’actes de harcèlement dus
               à sa participation à l’Eurovision. En effet il a été élu grâce à
-              ses followers et son côté touchant pour certains mais les
-              critiques ont afflué. En guise de réponse, il déclare sur France 2
-              « C'est une fierté pour moi de représenter mon pays en étant 100 %
+              ses followers et son côté touchant pour certains. Les
+              critiques ont afflué. En guise de réponse, il déclare au lendemain de sa victoire 
+              sur France 2 : « C'est une fierté pour moi de représenter mon pays en étant 100 %
               moi-même, malgré des fois des gens qui ont pu me dire sur Internet
-              ou autre que je ne représentais pas la France, avait-il déclaré au
-              lendemain de sa victoire sur France 2. Il y a beaucoup de haine,
+              ou autre que je ne représentais pas la France. Il y a beaucoup de haine,
               il y a beaucoup de choses qui pourraient m'affaiblir et me donner
               l'impression que je devrais arrêter ou me brider, m'auto-censurer.
               »`}
@@ -928,7 +927,7 @@ function ExamplesSection() {
               <br />
               {`Il portera finalement plainte pour “injures et provocation à la
               haine et à la violence et menaces homophobes”. Aujourd’hui encore,
-              il continu d’apparaître dans les grandes émissions et à gagner en
+              il continue d’apparaître dans les grandes émissions et à gagner en
               influence sur les réseaux sociaux.`}
             </p>
           </ExampleCard>
@@ -936,24 +935,37 @@ function ExamplesSection() {
             profileUrl={"/images/aliya.png"}
             name={"Aliya"}
             text={`
-            Aliya, 21 ans, est une jeune femme ayant été victime de cyberharcèlement lors de ses 14 ans.
-             Après cinq ans à en être malade pour le cachant par honte, Aliya trouve enfin le courage de 
+            Aliya, 21 ans, est une jeune femme ayant été victime de cyber-harcèlement lors de ses 14 ans.
+             Après cinq ans passés à en être malade en le cachant par honte, Aliya trouve enfin le courage de 
              nous partager sa mauvaise expérience pour avertir les jeunes. Elle a également écrit un 
              livre “Juste une histoire de nudes” où elle nous explique comment elle a réussi à 
-             ressortir de cette spirale. A 14 ans, notre collégienne était fan de jeux vidéo. 
+             ressortir de cette spirale. À 14 ans, notre collégienne était fan de jeux vidéo. 
              Un jour, elle a rencontré un garçon nommé Alexandre sur un jeu en ligne et a commencé
-              a dialogué avec lui. Elle qui se trouvait moche, a été réconfortée par les douces 
+              à dialoguer avec lui. Elle qui se trouvait moche, a été réconfortée par les douces 
               paroles de ce garçon qui la trouvait attirante. Charmée, Aliya décide de s’engager 
             `}
           >
             <p>
-              {`Aliya, 21 ans, est une jeune femme ayant été victime de cyberharcèlement lors de ses 14 ans. Après cinq ans à en être malade pour le cachant par honte, Aliya trouve enfin le courage de nous partager sa mauvaise expérience pour avertir les jeunes. Elle a également écrit un livre “Juste une histoire de nudes” où elle nous explique comment elle a réussi à ressortir de cette spirale. `}
+              {`Aliya, 21 ans, est une jeune femme ayant été victime de cyber-harcèlement lors de ses 14 ans.
+                Après cinq ans passés à en être malade en le cachant par honte, Aliya trouve enfin le courage
+                de nous partager sa mauvaise expérience pour avertir les jeunes. Elle a également écrit
+                un livre “Juste une histoire de nudes” où elle nous explique comment elle a réussi à 
+                ressortir de cette spirale. `}
               <br /> <br />
-              {`A 14 ans, notre collégienne était fan de jeux vidéo. Un jour, elle a rencontré un garçon nommé Alexandre sur un jeu en ligne et a commencé a dialogué avec lui. Elle qui se trouvait moche, a été réconfortée par les douces paroles de ce garçon qui la trouvait attirante. Charmée, Aliya décide de s’engager dans une relation virtuelle avec lui. Une histoire parfaite. Mais un jour, ce jeune homme lui demande une « preuve de son amour » au bout d’un mois de relation. Mais le plus surprenant, c’est qu’Alexandre lui donne un délai de 3 jours pour répondre et s’il n’a pas de réponse, il choisira l’objet de la preuve lui-même. Confuse, elle n’y répondit pas ; Trois jours passés, le petit ami lui dit “ Je veux bien une photo de tes seins ”. C’est à ce moment que la manipulation a commencé. Elle lui répondit “ tu ne peux pas me demander ça, on ne s’est pas vus en vrai, tu vas trop vite ”. Il la rassura en lui disant qu’elle était “ bloquée ” et qu’elle deviendrait une femme. Convaincue, elle mit donc la photo sur Snapchat en se disant qu’elle s’autodétruirait. `}
+              {`À 14 ans, notre collégienne était fan de jeux vidéo. Un jour, elle a rencontré un garçon nommé 
+              Alexandre sur un jeu en ligne et a commencé à dialoguer avec lui. Elle qui se trouvait moche, 
+              a été réconfortée par les douces paroles de ce garçon qui la trouvait attirante. Charmée,
+               Aliya décide de s’engager dans une relation virtuelle avec lui. Une histoire parfaite.
+                Mais un jour, ce jeune homme lui demande une « preuve de son amour » au bout d’un mois de relation.
+                 Mais le plus surprenant, c’est qu’Alexandre lui donne un délai de 3 jours pour répondre et 
+                 s’il n’a pas de réponse, il choisira l’objet de la preuve lui-même. Confuse, elle n’y répondit pas. Trois jours après, le petit ami lui dit “ Je veux bien une photo de tes seins ”. 
+                  C’est à ce moment que la manipulation a commencé. Elle lui répondit “ Tu ne peux pas me demander ça,
+                   on ne s’est pas vus en vrai, tu vas trop vite ”. Il la rassura en lui disant qu’elle était “ bloquée ”
+                    et qu’elle deviendrait une femme. Convaincue, elle mit donc la photo sur Snapchat en se disant qu’elle s’autodétruirait. `}
               <br /> <br />
               {`Puis il a commencé à demander des vidéos où elle devait “ se masturber” dont elle en ignorait la signification. De crainte de le perdre, elle finit par céder. Les demandes deviennent quotidiennes. Aliya commence à être perdue et à pleurer à longueur de journée. Elle se dit que c’est de sa faute, qu’il ne fallait pas envoyer la première photo et ne peut en parler à ses parents. Lorsqu’elle retourna à l’école, elle finit par se scarifier et s’évanouir.  `}
               <br /> <br />
-              {`Sa mère porte plainte mais cet évènement a laissé suite à du harcèlement de la part de ses amies et ses copains lui furent de nombreuses avances. `}
+              {`Sa mère porte plainte mais cet évènement a fait place à du harcèlement de la part de ses amies et ses copains lui firent de nombreuses avances. `}
               <br /> <br />
               {`Aujourd’hui, Aliya milite contre le harcèlement et se rend dans des écoles avec une sexologue afin de prévenir les adolescents.  `}
             </p>
@@ -1087,16 +1099,16 @@ function ConsequencesSection() {
             <hr />
 
             <p>
-              Le cyberharcèlement peut fragiliser le lien social. En effet,
-              l’anonymat que procure le cyberharcèlement peut avoir un incident
+              Le cyber-harcèlement peut fragiliser le lien social. En effet,
+              l’anonymat que procure le cyber-harcèlement peut avoir une incidence
               sur la confiance de la victime. Elle peut ne plus savoir vers qui
-              se dirigé et lui causé des problèmes lors d’échanges avec des
+              se diriger et lui causer des problèmes lors d’échanges avec des
               personnes qui lui sont inconnues.
               <br />
               <br />
-              Il peut s’ensuivre des maladies psychologiques comme par exemple
+              Il peut s’ensuivre des maladies psychologiques comme
               une phobie scolaire où la victime se renferme sur elle-même et est
-              dans l’incapacité de retourné à l’école.
+              dans l’incapacité de retourner à l’école.
             </p>
           </div>
 
@@ -1215,15 +1227,15 @@ function WhatToDoSection() {
             <br />
             <br />
             {`
-            N'hésitez pas à tout enregistrer et à prendre des captures d'écrans.
+            N'hésitez pas à tout enregistrer et à prendre des captures d'écran.
             Ces enregistrements peuvent servir de preuves en cas de procédure judiciaire.
             `}
             <br />
             <br />
             {`
-            Mais surout parlez-en à votre entourage, que ce soit vos parents, 
-            ou mêmes à vos amis. Le plus important est de prévenir de votre situation 
-            à des personnes en qui vous avez confiance. 
+            Mais surtout parlez-en à votre entourage, que ce soit à vos parents, 
+            ou même à vos amis. Le plus important est de prévenir de votre situation 
+            des personnes en qui vous avez confiance. 
             Notez aussi que des services existent pour vous accompagner et vous écouter :
             `}
             <ul>
@@ -1250,8 +1262,8 @@ function WhatToDoSection() {
             ou des messages suspects sur ses réseaux sociaux, n'hésitez pas à lui en parler.`}
             <br />
             <br />
-            {`S'il refuse de vous en parler, prévenez un de ses proches ou inciter-le à parler
-            à un autre adulte de confiance (que ça soit dans sa sphère privée, un membre de sa famille
+            {`S'il refuse de vous en parler, prévenez un de ses proches ou incitez-le à parler
+            à un autre adulte de confiance (que ce soit dans sa sphère privée, un membre de sa famille
             ou de son cercle amical).`}
             <br />
             <br />
@@ -1259,7 +1271,7 @@ function WhatToDoSection() {
             contactez le chef d'établissement ou le référent harcèlement.`}
             <br />
             <br />
-            {`Dans tout les cas, n'utilisez pas la violence si vous constatez un cas de cyber-harcèlement,
+            {`Dans tous les cas, n'utilisez pas la violence si vous constatez un cas de cyber-harcèlement,
             cela pourrait aggraver la situation.`}
             <br />
             <br />
